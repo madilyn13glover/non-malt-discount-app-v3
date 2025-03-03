@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Card, CardContent } from "/components/ui/card";
+import { Button } from "/components/ui/button";
+import { Checkbox } from "/components/ui/checkbox";
+
 
 export default function TwoPageFormApp() {
   const [formData, setFormData] = useState({ startDate: '', abAllowance: '', promotedPTR: '', endDate: '', chainParent: '',
