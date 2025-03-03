@@ -1,8 +1,33 @@
 import { useState } from 'react';
-import { Card, CardContent } from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
-import { Checkbox } from '../components/ui/Checkbox';
 
+// Define UI Components Locally
+const Card = ({ children, className }) => (
+  <div className={`rounded-lg shadow-md p-4 border ${className}`}>{children}</div>
+);
+
+const CardContent = ({ children }) => (
+  <div className="p-4">{children}</div>
+);
+
+const Button = ({ type = "button", className, children, onClick }) => (
+  <button
+    type={type}
+    className={`px-4 py-2 rounded-md ${className}`}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
+
+const Checkbox = ({ name, checked, onChange }) => (
+  <input
+    type="checkbox"
+    name={name}
+    checked={checked}
+    onChange={onChange}
+    className="w-5 h-5"
+  />
+);
 
 export default function TwoPageFormApp() {
   const [formData, setFormData] = useState({ startDate: '', abAllowance: '', promotedPTR: '', endDate: '', chainParent: '',
