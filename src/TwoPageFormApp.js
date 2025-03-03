@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Card, CardContent } from "/components/ui/card";
-import { Button } from "/components/ui/button";
-import { Checkbox } from "/components/ui/checkbox";
+import { Card, CardContent } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 
 
 export default function TwoPageFormApp() {

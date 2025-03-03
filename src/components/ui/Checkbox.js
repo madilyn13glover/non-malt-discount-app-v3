@@ -8,5 +8,4 @@ export function Checkbox({ name, checked, onChange }) {
         className="w-5 h-5"
       />
     );
-  }
-  
+  } 
