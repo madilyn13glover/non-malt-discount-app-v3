@@ -1,8 +1,8 @@
 {
-    "name": "non-malt-discount-app-v2",
+    "name": "non-malt-discount-app-v3",
     "version": "1.0.0",
     "private": true,
-    "homepage": "https://madilyn13glover.github.io/non-malt-discount-app-v2",
+    "homepage": "https://madilyn13glover.github.io/non-malt-discount-app-v3",
     "dependencies": {
       "react": "^18.0.0",
       "react-dom": "^18.0.0",
@@ -13,6 +13,13 @@
       "build": "react-scripts build",
       "predeploy": "npm run build",
       "deploy": "gh-pages -d build"
+    },
+    "browserslist": {
+      "production": [
+        "chrome >= 60"
+      ],
+      "development": [
+        "chrome >= 60"
+      ]
     }
-  }
-  
+  }  
