@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 export default function TwoPageFormApp() {
+  const [page, setPage] = useState('home');
   const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
@@ -9,8 +10,6 @@ export default function TwoPageFormApp() {
     promotedPTR: '', abPercentage: '', abAllowance: ''
   });
 
-  const [submitted, setSubmitted] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -18,138 +17,90 @@ export default function TwoPageFormApp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setPage('confirmation');
   };
 
+  if (page === 'home') {
+    return (
+      <div className="container">
+        <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
+        <button onClick={() => setPage('requestSandbox')}>Go to Request Sandbox</button>
+        <button onClick={() => setPage('requestScreen')}>Go to Request Screen</button>
+      </div>
+    );
+  }
+
+  if (page === 'confirmation') {
+    return (
+      <div className="container">
+        <h2 className="title">Confirmation</h2>
+        <pre>{JSON.stringify(formData, null, 2)}</pre>
+        <button onClick={() => setPage('requestScreen')}>Go Back</button>
+      </div>
+    );
+  }
+
   return (
-    <div className="container">
+    <div className="container wide-box">
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
-
-      {!submitted ? (
-        <form onSubmit={handleSubmit} className="card">
-          {/* Family, Brand, and Package in One Row */}
-          <div className="form-section three-cols">
-            <div className="input-group">
-              <label>Family:</label>
-              <select name="family" value={formData.family} onChange={handleChange}>
-                <option value="">Select Family</option>
-                <option value="Family1">Family 1</option>
-                <option value="Family2">Family 2</option>
-              </select>
-            </div>
-
-            <div className="input-group">
-              <label>Brands:</label>
-              <select name="brands" value={formData.brands} onChange={handleChange}>
-                <option value="">Select Brands</option>
-                <option value="Brand1">Brand 1</option>
-                <option value="Brand2">Brand 2</option>
-              </select>
-            </div>
-
-            <div className="input-group">
-              <label>Package:</label>
-              <select name="package" value={formData.package} onChange={handleChange}>
-                <option value="">Select Package</option>
-                <option value="Package1">Package 1</option>
-                <option value="Package2">Package 2</option>
-              </select>
-            </div>
+      <form onSubmit={handleSubmit} className="card">
+        {/* Form Fields */}
+        <div className="form-section three-cols">
+          <div className="input-group">
+            <label>Family:</label>
+            <select name="family" value={formData.family} onChange={handleChange}>
+              <option value="">Select Family</option>
+              <option value="Family1">Family 1</option>
+              <option value="Family2">Family 2</option>
+            </select>
           </div>
-
-          {/* Region, State, Wholesaler in One Row */}
-          <div className="form-section three-cols">
-            <div className="input-group">
-              <label>Region:</label>
-              <select name="region" value={formData.region} onChange={handleChange}>
-                <option value="">Select Region</option>
-                <option value="Region1">Region 1</option>
-                <option value="Region2">Region 2</option>
-              </select>
-            </div>
-
-            <div className="input-group">
-              <label>State:</label>
-              <select name="state" value={formData.state} onChange={handleChange}>
-                <option value="">Select State</option>
-                <option value="State1">State 1</option>
-                <option value="State2">State 2</option>
-              </select>
-            </div>
-
-            <div className="input-group">
-              <label>Wholesaler:</label>
-              <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
-                <option value="">Select Wholesaler</option>
-                <option value="Wholesaler1">Wholesaler 1</option>
-                <option value="Wholesaler2">Wholesaler 2</option>
-              </select>
-            </div>
+          <div className="input-group">
+            <label>Brands:</label>
+            <select name="brands" value={formData.brands} onChange={handleChange}>
+              <option value="">Select Brands</option>
+              <option value="Brand1">Brand 1</option>
+              <option value="Brand2">Brand 2</option>
+            </select>
           </div>
-
-          {/* Chain Parent & Chain in One Row */}
-          <div className="form-section two-cols">
-            <div className="input-group">
-              <label>Chain Parent:</label>
-              <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
-                <option value="">Select Chain Parent</option>
-                <option value="Parent1">Parent 1</option>
-                <option value="Parent2">Parent 2</option>
-              </select>
-            </div>
-
-            <div className="input-group">
-              <label>Chain:</label>
-              <select name="chain" value={formData.chain} onChange={handleChange}>
-                <option value="">Select Chain</option>
-                <option value="Chain1">Chain 1</option>
-                <option value="Chain2">Chain 2</option>
-              </select>
-            </div>
+          <div className="input-group">
+            <label>Package:</label>
+            <select name="package" value={formData.package} onChange={handleChange}>
+              <option value="">Select Package</option>
+              <option value="Package1">Package 1</option>
+              <option value="Package2">Package 2</option>
+            </select>
           </div>
-
-          {/* Start Date & End Date in One Row */}
-          <div className="form-section two-cols">
-            <div className="input-group">
-              <label>Start Date:</label>
-              <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
-            </div>
-
-            <div className="input-group">
-              <label>End Date:</label>
-              <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
-            </div>
-          </div>
-
-          {/* Promoted PTR, AB Percentage, AB Allowance in One Row */}
-          <div className="form-section three-cols">
-            <div className="input-group">
-              <label>Promoted PTR:</label>
-              <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
-            </div>
-
-            <div className="input-group">
-              <label>AB Allowance Percent:</label>
-              <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
-            </div>
-
-            <div className="input-group">
-              <label>AB Allowance:</label>
-              <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <button type="submit">Submit</button>
-        </form>
-      ) : (
-        <div className="text-center">
-          <h2 className="text-xl mb-4">Confirmation</h2>
-          <pre>{JSON.stringify(formData, null, 2)}</pre>
-          <button onClick={() => setSubmitted(false)}>Go Back</button>
         </div>
-      )}
+        <div className="form-section two-cols">
+          <div className="input-group">
+            <label>Start Date:</label>
+            <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+          </div>
+          <div className="input-group">
+            <label>End Date:</label>
+            <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
+          </div>
+        </div>
+        <div className="form-section three-cols">
+          <div className="input-group">
+            <label>Promoted PTR:</label>
+            <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
+          </div>
+          <div className="input-group">
+            <label>AB Allowance Percent:</label>
+            <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
+          </div>
+          <div className="input-group">
+            <label>AB Allowance:</label>
+            <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
+          </div>
+        </div>
+        <div className="calculations">
+          <p><strong>Calculated Discount:</strong> ${(parseFloat(formData.promotedPTR || 0) * parseFloat(formData.abPercentage || 0) / 100).toFixed(2)}</p>
+          <p><strong>Final AB Allowance:</strong> ${(parseFloat(formData.abAllowance || 0)).toFixed(2)}</p>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
-
