@@ -22,7 +22,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'home') {
     return (
-      <div className="container">
+      <div>
         <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
         <button onClick={() => setPage('requestSandbox')}>Go to Request Sandbox</button>
         <button onClick={() => setPage('requestScreen')}>Go to Request Screen</button>
@@ -32,7 +32,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'requestSandbox') {
     return (
-      <div className="container">
+      <div>
         <h1 className="title">Request Sandbox</h1>
         <iframe 
           src="https://your-sharepoint-list-url" 
@@ -47,7 +47,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'confirmation') {
     return (
-      <div className="container">
+      <div>
         <h2 className="title">Confirmation</h2>
         <pre>{JSON.stringify(formData, null, 2)}</pre>
         <button onClick={() => setPage('requestScreen')}>Back</button>
@@ -56,10 +56,10 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="container wide-box">
+    <div className="wide-box">
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
       <button onClick={() => setPage('home')}>Back</button>
-      <form onSubmit={handleSubmit} className="card">
+      <form onSubmit={handleSubmit}>
         {/* Form Fields */}
         <div className="form-section three-cols">
           <div className="input-group">
@@ -87,6 +87,32 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
+        <div className="form-section three-cols">
+          <div className="input-group">
+            <label>Region:</label>
+            <select name="region" value={formData.region} onChange={handleChange}>
+              <option value="">Select Region</option>
+              <option value="Region1">Region 1</option>
+              <option value="Region2">Region 2</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label>State:</label>
+            <select name="state" value={formData.state} onChange={handleChange}>
+              <option value="">Select State</option>
+              <option value="State1">State 1</option>
+              <option value="State2">State 2</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label>Wholesaler:</label>
+            <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
+              <option value="">Select Wholesaler</option>
+              <option value="Wholesaler1">Wholesaler 1</option>
+              <option value="Wholesaler2">Wholesaler 2</option>
+            </select>
+          </div>
+        </div>
         <div className="form-section two-cols">
           <div className="input-group">
             <label>Start Date:</label>
@@ -95,20 +121,6 @@ export default function TwoPageFormApp() {
           <div className="input-group">
             <label>End Date:</label>
             <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-section three-cols">
-          <div className="input-group">
-            <label>Promoted PTR:</label>
-            <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
-          </div>
-          <div className="input-group">
-            <label>AB Allowance Percent:</label>
-            <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
-          </div>
-          <div className="input-group">
-            <label>AB Allowance:</label>
-            <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
           </div>
         </div>
         <div className="calculations">
@@ -120,3 +132,4 @@ export default function TwoPageFormApp() {
     </div>
   );
 }
+
