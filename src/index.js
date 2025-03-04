@@ -1,7 +1,6 @@
-import './index.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.css';  // Use the updated custom CSS
 import TwoPageFormApp from './TwoPageFormApp';
 
 ReactDOM.render(
