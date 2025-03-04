@@ -30,12 +30,27 @@ export default function TwoPageFormApp() {
     );
   }
 
+  if (page === 'requestSandbox') {
+    return (
+      <div className="container">
+        <h1 className="title">Request Sandbox</h1>
+        <iframe 
+          src="https://your-sharepoint-list-url" 
+          width="100%" 
+          height="600px" 
+          style={{ border: "none" }}
+        ></iframe>
+        <button onClick={() => setPage('home')}>Back</button>
+      </div>
+    );
+  }
+
   if (page === 'confirmation') {
     return (
       <div className="container">
         <h2 className="title">Confirmation</h2>
         <pre>{JSON.stringify(formData, null, 2)}</pre>
-        <button onClick={() => setPage('requestScreen')}>Go Back</button>
+        <button onClick={() => setPage('requestScreen')}>Back</button>
       </div>
     );
   }
@@ -43,6 +58,7 @@ export default function TwoPageFormApp() {
   return (
     <div className="container wide-box">
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
+      <button onClick={() => setPage('home')}>Back</button>
       <form onSubmit={handleSubmit} className="card">
         {/* Form Fields */}
         <div className="form-section three-cols">
