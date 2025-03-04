@@ -5,7 +5,9 @@ import TwoPageFormApp from './TwoPageFormApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TwoPageFormApp />
+    <div className="container">
+      <TwoPageFormApp />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

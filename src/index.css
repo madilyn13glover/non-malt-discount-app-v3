@@ -6,28 +6,24 @@ body {
     font-family: 'AvantGarde', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #f4f4f4;
     color: black;
-}
-
-/* Main Container */
-.container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     min-height: 100vh;
-    padding: 20px;
-    background-color: #f4f4f4;
 }
 
-/* Card Layout */
-.card {
-    width: 1400px;
+/* Main Container - Smaller Box */
+.container {
+    width: 100%;
+    max-width: 1100px;  /* Smaller than full screen */
     padding: 20px;
     background-color: white;
+    border-radius: 15px;
     border: 2px solid black;
-    border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 /* Title Styling */
@@ -44,23 +40,30 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    padding: 10px;
 }
 
 /* Form Sections */
 .form-section {
-    display: grid;
-    gap: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd; /* Light Line Separator */
 }
 
+/* Ensure Three Items in One Row */
 .form-section.three-cols {
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    gap: 20px;
 }
 
-.form-section.two-cols {
-    grid-template-columns: repeat(2, 1fr);
+/* Each Input/Select Box */
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Input and Select Styling */
@@ -69,11 +72,12 @@ input, select {
     padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px; /* Rounded edges */
     background-color: white;
     color: black;
 }
 
+/* Label Styling */
 label {
     font-weight: bold;
     margin-bottom: 5px;
@@ -82,7 +86,7 @@ label {
 /* Button Styling */
 button {
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 10px;  /* Rounded edges */
     background-color: rgba(209, 163, 60, 1);
     color: black;
     font-size: 16px;
@@ -132,8 +136,7 @@ button:disabled {
     height: 80px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: white;
     font-size: 16px;
 }
-
