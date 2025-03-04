@@ -1,8 +1,22 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: black;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: gold;
+  color: black;
+  cursor: pointer;
+}
+
   
