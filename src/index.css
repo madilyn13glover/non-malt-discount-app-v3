@@ -1,3 +1,52 @@
+/* Import Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Input & Select Styling */
+input, select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+/* Button Styling */
+button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: gold;
+  color: black;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: darkgoldenrod;
+}
+
+/* Card Component Styling */
+.card {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+}
