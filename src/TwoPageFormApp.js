@@ -2,11 +2,14 @@ import { useState } from 'react';
 
 export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
+  const today = new Date().toISOString().split('T')[0];
+  const defaultEndDate = `${new Date().getFullYear()}-12-31`;
+  
   const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
     chainParent: '', chain: '',
-    startDate: '', endDate: '',
+    startDate: today, endDate: defaultEndDate,
     promotedPTR: '', abPercentage: '', abAllowance: ''
   });
 
@@ -162,7 +165,7 @@ export default function TwoPageFormApp() {
             <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
           </div>
         </div>
-        <div className="calculations" style={{ backgroundColor: 'black', color: 'white', padding: '10px', borderRadius: '5px', marginBottom: '20px' }}>
+        <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px', marginBottom: '20px' }}>
           <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
           <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
           <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
