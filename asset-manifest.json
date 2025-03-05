@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/non-malt-discount-app-v3/static/css/main.40d175e5.css",
+    "main.css": "/non-malt-discount-app-v3/static/css/main.bae958a5.css",
     "main.js": "/non-malt-discount-app-v3/static/js/main.23898122.js",
     "index.html": "/non-malt-discount-app-v3/index.html",
-    "main.40d175e5.css.map": "/non-malt-discount-app-v3/static/css/main.40d175e5.css.map",
+    "main.bae958a5.css.map": "/non-malt-discount-app-v3/static/css/main.bae958a5.css.map",
     "main.23898122.js.map": "/non-malt-discount-app-v3/static/js/main.23898122.js.map"
   },
   "entrypoints": [
-    "static/css/main.40d175e5.css",
+    "static/css/main.bae958a5.css",
     "static/js/main.23898122.js"
   ]
 }
