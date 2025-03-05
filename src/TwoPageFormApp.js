@@ -53,14 +53,14 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="form-container" style={{ border: 'none' }}>
+    <div className="form-container" style={{ maxWidth: '900px', margin: '0 auto', border: 'none', padding: '20px' }}>
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
-      <div className="button-row">
+      <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <button onClick={() => setPage('home')} className="back-button">Back</button>
         <button onClick={handleReset} className="reset-button">Reset</button>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px' }}> style={{ marginBottom: '20px' }}
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
@@ -86,7 +86,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section three-cols no-overlap" style={{ marginBottom: '20px' }}>
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Region:</label>
             <select name="region" value={formData.region} onChange={handleChange}>
@@ -112,7 +112,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section two-cols no-overlap" style={{ display: 'flex', gap: '30px' }}> style={{ marginBottom: '20px' }}
+        <div className="form-section two-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Start Date:</label>
             <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
@@ -122,7 +122,7 @@ export default function TwoPageFormApp() {
             <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
           </div>
         </div>
-        <div className="form-section three-cols no-overlap" style={{ marginBottom: '20px' }}>
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Promoted PTR:</label>
             <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
@@ -135,10 +135,6 @@ export default function TwoPageFormApp() {
             <label>AB Allowance:</label>
             <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
           </div>
-        </div>
-        <div className="calculations">
-          <p><strong>Calculated Discount:</strong> ${(parseFloat(formData.promotedPTR || 0) * parseFloat(formData.abPercentage || 0) / 100).toFixed(2)}</p>
-          <p><strong>Final AB Allowance:</strong> ${(parseFloat(formData.abAllowance || 0)).toFixed(2)}</p>
         </div>
         <button type="submit">Submit</button>
       </form>
