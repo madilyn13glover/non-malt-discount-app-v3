@@ -86,13 +86,7 @@ export default function TwoPageFormApp() {
   return (
     <div className="form-container" style={{ maxWidth: '900px', margin: '0 auto', border: 'none', padding: '20px' }}>
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
-      <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <button onClick={() => setPage('home')} className="back-button">Back</button>
-        <button onClick={handleReset} className="reset-button">Reset</button>
-      </div>
-      <form onSubmit={handleSubmit}>
-        
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+              <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
@@ -118,6 +112,12 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
+<div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <button onClick={() => setPage('home')} className="back-button">Back</button>
+        <button onClick={handleReset} className="reset-button">Reset</button>
+      </div>
+      <form onSubmit={handleSubmit}>
+        
         <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Chain Parent:</label>
