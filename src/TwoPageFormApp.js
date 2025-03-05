@@ -5,7 +5,9 @@ export default function TwoPageFormApp() {
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
   
-  const [formData, setFormData] = useState({
+  
+    
+    const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
     chainParent: '', chain: '',
@@ -89,6 +91,25 @@ export default function TwoPageFormApp() {
         <button onClick={handleReset} className="reset-button">Reset</button>
       </div>
       <form onSubmit={handleSubmit}>
+        
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+          <div className="input-group">
+            <label>Chain Parent:</label>
+            <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
+              <option value="">Select Chain Parent</option>
+              <option value="ChainParent1">Chain Parent 1</option>
+              <option value="ChainParent2">Chain Parent 2</option>
+            </select>
+          </div>
+          <div className="input-group" style={{ flex: '1' }}>
+            <label>Chain:</label>
+            <select name="chain" value={formData.chain} onChange={handleChange}>
+              <option value="">Select Chain</option>
+              <option value="Chain1">Chain 1</option>
+              <option value="Chain2">Chain 2</option>
+            </select>
+          </div>
+        </div>
         <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
             <label>Family:</label>
