@@ -32,10 +32,10 @@ export default function TwoPageFormApp() {
 
   if (page === 'home') {
     return (
-      <div className="container home-screen">
+      <div className="home-screen">
         <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
         <div className="button-container" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '20px' }}>
-          <button onClick={() => setPage('requestSandbox')}>Submitted Requests</button>
+          <button onClick={() => setPage('requestSandbox')}>See Submitted Requests</button>
           <button onClick={() => setPage('requestScreen')}>Submit Request</button>
         </div>
       </div>
@@ -53,14 +53,14 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="container form-container">
+    <div className="form-container" style={{ border: 'none' }}>
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
       <div className="button-row">
         <button onClick={() => setPage('home')} className="back-button">Back</button>
         <button onClick={handleReset} className="reset-button">Reset</button>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="form-section three-cols no-overlap" style={{ marginBottom: '20px' }}>
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '20px' }}> style={{ marginBottom: '20px' }}>
           <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
@@ -112,7 +112,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section two-cols no-overlap" style={{ marginBottom: '20px' }}>
+        <div className="form-section two-cols no-overlap" style={{ display: 'flex', gap: '20px' }}> style={{ marginBottom: '20px' }}>
           <div className="input-group">
             <label>Start Date:</label>
             <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
