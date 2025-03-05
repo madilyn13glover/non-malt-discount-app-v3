@@ -30,6 +30,32 @@ export default function TwoPageFormApp() {
     });
   };
 
+  if (page === 'requestSandbox') {
+    return (
+      <div className="container">
+        <h2 className="title">Submitted Requests</h2>
+        <div className="gallery">
+          <div className="request-card">
+            <p><strong>Request ID:</strong> 001</p>
+            <p><strong>Status:</strong> Pending</p>
+            <p><strong>Date:</strong> 2025-03-05</p>
+          </div>
+          <div className="request-card">
+            <p><strong>Request ID:</strong> 002</p>
+            <p><strong>Status:</strong> Approved</p>
+            <p><strong>Date:</strong> 2025-03-03</p>
+          </div>
+          <div className="request-card">
+            <p><strong>Request ID:</strong> 003</p>
+            <p><strong>Status:</strong> Rejected</p>
+            <p><strong>Date:</strong> 2025-03-02</p>
+          </div>
+        </div>
+        <button onClick={() => setPage('home')}>Back</button>
+      </div>
+    );
+  }
+
   if (page === 'home') {
     return (
       <div className="home-screen">
@@ -135,6 +161,13 @@ export default function TwoPageFormApp() {
             <label>AB Allowance:</label>
             <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
           </div>
+        </div>
+        <div className="calculations" style={{ backgroundColor: 'black', color: 'white', padding: '10px', borderRadius: '5px', marginBottom: '20px' }}>
+          <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+          <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+          <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
+          <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
+          <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
         </div>
         <button type="submit">Submit</button>
       </form>
