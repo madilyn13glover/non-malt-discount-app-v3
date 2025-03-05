@@ -30,21 +30,6 @@ export default function TwoPageFormApp() {
     );
   }
 
-  if (page === 'requestSandbox') {
-    return (
-      <div className="container">
-        <h1 className="title">Request Sandbox</h1>
-        <iframe 
-          src="https://your-sharepoint-list-url" 
-          width="100%" 
-          height="600px" 
-          style={{ border: "none" }}
-        ></iframe>
-        <button onClick={() => setPage('home')}>Back</button>
-      </div>
-    );
-  }
-
   if (page === 'confirmation') {
     return (
       <div className="container">
@@ -120,6 +105,20 @@ export default function TwoPageFormApp() {
           <div className="input-group">
             <label>End Date:</label>
             <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
+          </div>
+        </div>
+        <div className="form-section">
+          <div className="input-group">
+            <label>Promoted PTR:</label>
+            <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
+          </div>
+          <div className="input-group">
+            <label>AB Allowance Percent:</label>
+            <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
+          </div>
+          <div className="input-group">
+            <label>AB Allowance:</label>
+            <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
           </div>
         </div>
         <div className="calculations">
