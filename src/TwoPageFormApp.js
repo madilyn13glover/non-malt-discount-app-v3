@@ -20,6 +20,16 @@ export default function TwoPageFormApp() {
     setPage('confirmation');
   };
 
+  const handleReset = () => {
+    setFormData({
+      family: '', brands: '', package: '',
+      region: '', state: '', wholesaler: '',
+      chainParent: '', chain: '',
+      startDate: '', endDate: '',
+      promotedPTR: '', abPercentage: '', abAllowance: ''
+    });
+  };
+
   if (page === 'home') {
     return (
       <div className="container">
@@ -126,6 +136,7 @@ export default function TwoPageFormApp() {
           <p><strong>Final AB Allowance:</strong> ${(parseFloat(formData.abAllowance || 0)).toFixed(2)}</p>
         </div>
         <button type="submit">Submit</button>
+        <button type="button" onClick={handleReset} className="reset-button">Reset</button>
       </form>
     </div>
   );
