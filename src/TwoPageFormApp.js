@@ -22,7 +22,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'home') {
     return (
-      <div>
+      <div className="container">
         <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
         <button onClick={() => setPage('requestSandbox')}>Go to Request Sandbox</button>
         <button onClick={() => setPage('requestScreen')}>Go to Request Screen</button>
@@ -32,7 +32,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'requestSandbox') {
     return (
-      <div>
+      <div className="container">
         <h1 className="title">Request Sandbox</h1>
         <iframe 
           src="https://your-sharepoint-list-url" 
@@ -47,7 +47,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'confirmation') {
     return (
-      <div>
+      <div className="container">
         <h2 className="title">Confirmation</h2>
         <pre>{JSON.stringify(formData, null, 2)}</pre>
         <button onClick={() => setPage('requestScreen')}>Back</button>
@@ -56,12 +56,11 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="wide-box">
+    <div className="container form-container">
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
       <button onClick={() => setPage('home')}>Back</button>
       <form onSubmit={handleSubmit}>
-        {/* Form Fields */}
-        <div className="form-section three-cols">
+        <div className="form-section">
           <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
@@ -87,7 +86,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section three-cols">
+        <div className="form-section">
           <div className="input-group">
             <label>Region:</label>
             <select name="region" value={formData.region} onChange={handleChange}>
@@ -113,7 +112,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section two-cols">
+        <div className="form-section">
           <div className="input-group">
             <label>Start Date:</label>
             <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
@@ -132,4 +131,3 @@ export default function TwoPageFormApp() {
     </div>
   );
 }
-
