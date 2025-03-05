@@ -32,10 +32,12 @@ export default function TwoPageFormApp() {
 
   if (page === 'home') {
     return (
-      <div className="container">
+      <div className="container home-screen">
         <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
-        <button onClick={() => setPage('requestSandbox')}>Go to Request Sandbox</button>
-        <button onClick={() => setPage('requestScreen')}>Go to Request Screen</button>
+        <div className="button-container">
+          <button onClick={() => setPage('requestSandbox')}>Go to Request Sandbox</button>
+          <button onClick={() => setPage('requestScreen')}>Go to Request Screen</button>
+        </div>
       </div>
     );
   }
@@ -53,7 +55,10 @@ export default function TwoPageFormApp() {
   return (
     <div className="container form-container">
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
-      <button onClick={() => setPage('home')}>Back</button>
+      <div className="button-row">
+        <button onClick={() => setPage('home')} className="back-button">Back</button>
+        <button onClick={handleReset} className="reset-button">Reset</button>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="form-section three-cols">
           <div className="input-group">
@@ -136,7 +141,6 @@ export default function TwoPageFormApp() {
           <p><strong>Final AB Allowance:</strong> ${(parseFloat(formData.abAllowance || 0)).toFixed(2)}</p>
         </div>
         <button type="submit">Submit</button>
-        <button type="button" onClick={handleReset} className="reset-button">Reset</button>
       </form>
     </div>
   );
