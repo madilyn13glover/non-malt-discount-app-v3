@@ -45,7 +45,7 @@ export default function TwoPageFormApp() {
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
       <button onClick={() => setPage('home')}>Back</button>
       <form onSubmit={handleSubmit}>
-        <div className="form-section">
+        <div className="form-section three-cols">
           <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
@@ -71,7 +71,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section">
+        <div className="form-section three-cols">
           <div className="input-group">
             <label>Region:</label>
             <select name="region" value={formData.region} onChange={handleChange}>
@@ -97,7 +97,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section">
+        <div className="form-section two-cols">
           <div className="input-group">
             <label>Start Date:</label>
             <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
@@ -107,7 +107,7 @@ export default function TwoPageFormApp() {
             <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
           </div>
         </div>
-        <div className="form-section">
+        <div className="form-section three-cols">
           <div className="input-group">
             <label>Promoted PTR:</label>
             <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
