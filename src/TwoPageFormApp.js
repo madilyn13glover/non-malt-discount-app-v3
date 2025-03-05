@@ -94,24 +94,6 @@ export default function TwoPageFormApp() {
         
         <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
-            <label>Chain Parent:</label>
-            <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
-              <option value="">Select Chain Parent</option>
-              <option value="ChainParent1">Chain Parent 1</option>
-              <option value="ChainParent2">Chain Parent 2</option>
-            </select>
-          </div>
-          <div className="input-group" style={{ flex: '1' }}>
-            <label>Chain:</label>
-            <select name="chain" value={formData.chain} onChange={handleChange}>
-              <option value="">Select Chain</option>
-              <option value="Chain1">Chain 1</option>
-              <option value="Chain2">Chain 2</option>
-            </select>
-          </div>
-        </div>
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-          <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
               <option value="">Select Family</option>
@@ -133,6 +115,24 @@ export default function TwoPageFormApp() {
               <option value="">Select Package</option>
               <option value="Package1">Package 1</option>
               <option value="Package2">Package 2</option>
+            </select>
+          </div>
+        </div>
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+          <div className="input-group">
+            <label>Chain Parent:</label>
+            <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
+              <option value="">Select Chain Parent</option>
+              <option value="ChainParent1">Chain Parent 1</option>
+              <option value="ChainParent2">Chain Parent 2</option>
+            </select>
+          </div>
+          <div className="input-group" style={{ flex: '1' }}>
+            <label>Chain:</label>
+            <select name="chain" value={formData.chain} onChange={handleChange}>
+              <option value="">Select Chain</option>
+              <option value="Chain1">Chain 1</option>
+              <option value="Chain2">Chain 2</option>
             </select>
           </div>
         </div>
