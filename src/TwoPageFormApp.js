@@ -60,7 +60,7 @@ export default function TwoPageFormApp() {
         <button onClick={handleReset} className="reset-button">Reset</button>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '20px' }}> style={{ marginBottom: '20px' }}>
+        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px' }}> style={{ marginBottom: '20px' }}
           <div className="input-group">
             <label>Family:</label>
             <select name="family" value={formData.family} onChange={handleChange}>
@@ -112,7 +112,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div>
-        <div className="form-section two-cols no-overlap" style={{ display: 'flex', gap: '20px' }}> style={{ marginBottom: '20px' }}>
+        <div className="form-section two-cols no-overlap" style={{ display: 'flex', gap: '30px' }}> style={{ marginBottom: '20px' }}
           <div className="input-group">
             <label>Start Date:</label>
             <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
