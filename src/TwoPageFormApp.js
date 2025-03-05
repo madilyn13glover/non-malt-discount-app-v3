@@ -34,7 +34,7 @@ export default function TwoPageFormApp() {
     return (
       <div className="container home-screen">
         <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
-        <div className="button-container">
+        <div className="button-container" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '20px' }}>
           <button onClick={() => setPage('requestSandbox')}>Submitted Requests</button>
           <button onClick={() => setPage('requestScreen')}>Submit Request</button>
         </div>
@@ -57,7 +57,7 @@ export default function TwoPageFormApp() {
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
       <div className="button-row">
         <button onClick={() => setPage('home')} className="back-button">Back</button>
-        <button onClick={handleReset} className="reset-button" style={{ marginLeft: 'auto' }}>Reset</button>
+        <button onClick={handleReset} className="reset-button">Reset</button>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="form-section three-cols no-overlap" style={{ marginBottom: '20px' }}>
