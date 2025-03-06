@@ -101,7 +101,7 @@ export default function TwoPageFormApp() {
   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '20px' }}>
 
     {/* Left Section (Form Fields - 3 Columns) */}
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
       {/* Family, Brands, Package */}
  {/* Family, Brand, and Package on the Same Line */}
 <div className="form-section three-cols no-overlap"
