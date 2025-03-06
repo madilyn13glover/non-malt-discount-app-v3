@@ -90,7 +90,7 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="form-container" style={{ maxWidth: '900px', margin: '0 auto', border: 'none', padding: '20px' }}>
+    <div className="form-container" style={{ maxWidth: '1200px', margin: '0 auto', border: 'none', padding: '20px' }}>
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
 <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <button onClick={() => setPage('home')} className="back-button">Back</button>
@@ -103,48 +103,66 @@ export default function TwoPageFormApp() {
     {/* Left Section (Form Fields - 3 Columns) */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
       {/* Family, Brands, Package */}
-      <div className="input-group">
-        <label>Family:</label>
-        <select name="family" value={formData.family} onChange={handleChange}>
-          <option value="">Select Family</option>
-          <option value="Family1">Family 1</option>
-          <option value="Family2">Family 2</option>
-        </select>
-      </div>
-      <div className="input-group">
-        <label>Brands:</label>
-        <select name="brands" value={formData.brands} onChange={handleChange}>
-          <option value="">Select Brands</option>
-          <option value="Brand1">Brand 1</option>
-          <option value="Brand2">Brand 2</option>
-        </select>
-      </div>
-      <div className="input-group">
-        <label>Package:</label>
-        <select name="package" value={formData.package} onChange={handleChange}>
-          <option value="">Select Package</option>
-          <option value="Package1">Package 1</option>
-          <option value="Package2">Package 2</option>
-        </select>
-      </div>
+      {/* Family, Brand, and Package on the Same Line */}
+<div className="form-section three-cols no-overlap"
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Family:</label>
+    <select name="family" value={formData.family} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
+      <option value="">Select Family</option>
+      <option value="Family1">Family 1</option>
+      <option value="Family2">Family 2</option>
+    </select>
+  </div>
+
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Brands:</label>
+    <select name="brands" value={formData.brands} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
+      <option value="">Select Brands</option>
+      <option value="Brand1">Brand 1</option>
+      <option value="Brand2">Brand 2</option>
+    </select>
+  </div>
+
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Package:</label>
+    <select name="package" value={formData.package} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
+      <option value="">Select Package</option>
+      <option value="Package1">Package 1</option>
+      <option value="Package2">Package 2</option>
+    </select>
+  </div>
+</div>
+
 
       {/* Chain Parent, Chain */}
-      <div className="input-group">
-        <label>Chain Parent:</label>
-        <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
-          <option value="">Select Chain Parent</option>
-          <option value="ChainParent1">Chain Parent 1</option>
-          <option value="ChainParent2">Chain Parent 2</option>
-        </select>
-      </div>
-      <div className="input-group">
-        <label>Chain:</label>
-        <select name="chain" value={formData.chain} onChange={handleChange}>
-          <option value="">Select Chain</option>
-          <option value="Chain1">Chain 1</option>
-          <option value="Chain2">Chain 2</option>
-        </select>
-      </div>
+      {/* Chain Parent & Chain on the Same Line */}
+<div className="form-section two-cols no-overlap"
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Chain Parent:</label>
+    <select name="chainParent" value={formData.chainParent} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
+      <option value="">Select Chain Parent</option>
+      <option value="ChainParent1">Chain Parent 1</option>
+      <option value="ChainParent2">Chain Parent 2</option>
+    </select>
+  </div>
+
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Chain:</label>
+    <select name="chain" value={formData.chain} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
+      <option value="">Select Chain</option>
+      <option value="Chain1">Chain 1</option>
+      <option value="Chain2">Chain 2</option>
+    </select>
+  </div>
+</div>
+
 
       {/* Region, State, Wholesaler */}
       <div className="form-section three-cols no-overlap" 
@@ -174,7 +192,6 @@ export default function TwoPageFormApp() {
     </select>
   </div>
 </div>
-
 
       {/* Start Date, End Date */}
       <div className="form-section two-cols no-overlap" 
