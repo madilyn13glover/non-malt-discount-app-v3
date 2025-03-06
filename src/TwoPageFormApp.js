@@ -98,7 +98,7 @@ export default function TwoPageFormApp() {
       </div>
       <form onSubmit={handleSubmit}>
   {/* Grid Layout for Form Fields and Calculations */}
-  <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: '30px', marginBottom: '20px' }}>
+  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '20px' }}>
 
     {/* Left Section (Form Fields - 3 Columns) */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
