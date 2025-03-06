@@ -96,167 +96,137 @@ export default function TwoPageFormApp() {
         <button onClick={() => setPage('home')} className="back-button">Back</button>
         <button onClick={handleReset} className="reset-button">Reset</button>
       </div>
-      <form onSubmit={handleSubmit}>              
-              
-              <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-          <div className="input-group">
-            <label>Family:</label>
-            <select name="family" value={formData.family} onChange={handleChange}>
-              <option value="">Select Family</option>
-              <option value="Family1">Family 1</option>
-              <option value="Family2">Family 2</option>
-            </select>
-          </div>
-          <div className="input-group">
-            <label>Brands:</label>
-            <select name="brands" value={formData.brands} onChange={handleChange}>
-              <option value="">Select Brands</option>
-              <option value="Brand1">Brand 1</option>
-              <option value="Brand2">Brand 2</option>
-            </select>
-          </div>
-          <div className="input-group">
-            <label>Package:</label>
-            <select name="package" value={formData.package} onChange={handleChange}>
-              <option value="">Select Package</option>
-              <option value="Package1">Package 1</option>
-              <option value="Package2">Package 2</option>
-            </select>
-          </div>
-        </div> 
-    
-          <div className="input-group">
-            <label>Chain Parent:</label>
-            <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
-              <option value="">Select Chain Parent</option>
-              <option value="ChainParent1">Chain Parent 1</option>
-              <option value="ChainParent2">Chain Parent 2</option>
-            </select>
-          </div>
-          <div className="input-group" style={{ flex: '1' }}>
-            <label>Chain:</label>
-            <select name="chain" value={formData.chain} onChange={handleChange}>
-              <option value="">Select Chain</option>
-              <option value="Chain1">Chain 1</option>
-              <option value="Chain2">Chain 2</option>
-            </select>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          {/* Calculations Section */}
-          <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
-            <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-            <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-            <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
-            <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-            <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
-        </div>
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-          <div className="input-group">
-            <label>Region:</label>
-            <select name="region" value={formData.region} onChange={handleChange}>
-              <option value="">Select Region</option>
-              <option value="Region1">Region 1</option>
-              <option value="Region2">Region 2</option>
-            </select>
-          </div>
-          <div className="input-group">
-            <label>State:</label>
-            <select name="state" value={formData.state} onChange={handleChange}>
-              <option value="">Select State</option>
-              <option value="State1">State 1</option>
-              <option value="State2">State 2</option>
-            </select>
-          </div>
-          <div className="input-group">
-            <label>Wholesaler:</label>
-            <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
-              <option value="">Select Wholesaler</option>
-              <option value="Wholesaler1">Wholesaler 1</option>
-              <option value="Wholesaler2">Wholesaler 2</option>
-            </select>
-          </div>
-        </div>
-        <div className="form-section two-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-          <div className="input-group">
-            <label>Start Date:</label>
-            <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
-          </div>
-          <div className="input-group">
-            <label>End Date:</label>
-            <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-          <div className="input-group">
-            <label>Promoted PTR:</label>
-            <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
-          </div>
-          <div className="input-group">
-            <label>AB Allowance Percent:</label>
-            <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
-          </div>
-          <div className="input-group">
-            <label>AB Allowance:</label>
-            <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
-          </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            {formData.qdDiscount && (
-  <div className="qd-popup" style={{ 
-    position: 'fixed', top: '20%', left: '50%', transform: 'translate(-50%, 0)', 
-    width: '500px', backgroundColor: 'white', padding: '20px', border: '2px solid black',
-    borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', zIndex: '1000'
-  }}>
-    <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>QD Discount Table</h2>
-    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-      <thead>
-        <tr>
-          <th style={{ border: '1px solid black', padding: '5px' }}>QD MIN</th>
-          <th style={{ border: '1px solid black', padding: '5px' }}>QD MAX</th>
-          <th style={{ border: '1px solid black', padding: '5px' }}>PPTR</th>
-          <th style={{ border: '1px solid black', padding: '5px' }}>% Allowance</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style={{ border: '1px solid black', padding: '5px' }}>1</td>
-          <td style={{ border: '1px solid black', padding: '5px' }}>9999</td>
-          <td style={{ border: '1px solid black', padding: '5px' }}>$0.00</td>
-          <td style={{ border: '1px solid black', padding: '5px' }}>50%</td>
-        </tr>
-      </tbody>
-    </table>
-    <button onClick={() => setFormData(prev => ({ ...prev, qdDiscount: false }))} style={{
-      display: 'block', margin: '10px auto', padding: '10px',
-      backgroundColor: 'goldenrod', border: 'none', borderRadius: '5px', cursor: 'pointer'
-    }}>Close</button>
-  </div>
-)}
-          </div>
+      <form onSubmit={handleSubmit}>
+  {/* Grid Layout for Form Fields and Calculations */}
+  <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: '30px', marginBottom: '20px' }}>
 
-          {/* QD Discount Checkbox */}
-          <div className="qd-checkbox">
-            <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
-              <input 
-                type="checkbox" 
-                name="qdDiscount" 
-                checked={formData.qdDiscount || false} 
-                onChange={handleChange} 
-                style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
-              />
-              QD Discount
-            </label>
-          </div>
-        </div>
-        
-        {/* Submit Button */}
-        <button type="submit">Submit</button>
-      </form>
-      {formData.qdDiscount && (
-        <div className="qd-popup" style={{ position: 'fixed', top: '20%', left: '50%', transform: 'translate(-50%, 0)', width: '500px', backgroundColor: 'white', padding: '20px', border: '2px solid black', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', zIndex: '1000' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>QD Discount Table</h2>
+    {/* Left Section (Form Fields - 3 Columns) */}
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+      {/* Family, Brands, Package */}
+      <div className="input-group">
+        <label>Family:</label>
+        <select name="family" value={formData.family} onChange={handleChange}>
+          <option value="">Select Family</option>
+          <option value="Family1">Family 1</option>
+          <option value="Family2">Family 2</option>
+        </select>
+      </div>
+      <div className="input-group">
+        <label>Brands:</label>
+        <select name="brands" value={formData.brands} onChange={handleChange}>
+          <option value="">Select Brands</option>
+          <option value="Brand1">Brand 1</option>
+          <option value="Brand2">Brand 2</option>
+        </select>
+      </div>
+      <div className="input-group">
+        <label>Package:</label>
+        <select name="package" value={formData.package} onChange={handleChange}>
+          <option value="">Select Package</option>
+          <option value="Package1">Package 1</option>
+          <option value="Package2">Package 2</option>
+        </select>
+      </div>
+
+      {/* Chain Parent, Chain */}
+      <div className="input-group">
+        <label>Chain Parent:</label>
+        <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
+          <option value="">Select Chain Parent</option>
+          <option value="ChainParent1">Chain Parent 1</option>
+          <option value="ChainParent2">Chain Parent 2</option>
+        </select>
+      </div>
+      <div className="input-group">
+        <label>Chain:</label>
+        <select name="chain" value={formData.chain} onChange={handleChange}>
+          <option value="">Select Chain</option>
+          <option value="Chain1">Chain 1</option>
+          <option value="Chain2">Chain 2</option>
+        </select>
+      </div>
+
+      {/* Region, State, Wholesaler */}
+      <div className="input-group">
+        <label>Region:</label>
+        <select name="region" value={formData.region} onChange={handleChange}>
+          <option value="">Select Region</option>
+          <option value="Region1">Region 1</option>
+          <option value="Region2">Region 2</option>
+        </select>
+      </div>
+      <div className="input-group">
+        <label>State:</label>
+        <select name="state" value={formData.state} onChange={handleChange}>
+          <option value="">Select State</option>
+          <option value="State1">State 1</option>
+          <option value="State2">State 2</option>
+        </select>
+      </div>
+      <div className="input-group">
+        <label>Wholesaler:</label>
+        <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
+          <option value="">Select Wholesaler</option>
+          <option value="Wholesaler1">Wholesaler 1</option>
+          <option value="Wholesaler2">Wholesaler 2</option>
+        </select>
+      </div>
+
+      {/* Start Date, End Date */}
+      <div className="input-group">
+        <label>Start Date:</label>
+        <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+      </div>
+      <div className="input-group">
+        <label>End Date:</label>
+        <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
+      </div>
+
+      {/* Promoted PTR, AB Allowance % and AB Allowance */}
+      <div className="input-group">
+        <label>Promoted PTR:</label>
+        <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
+      </div>
+      <div className="input-group">
+        <label>AB Allowance Percent:</label>
+        <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
+      </div>
+      <div className="input-group">
+        <label>AB Allowance:</label>
+        <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
+      </div>
+    </div>
+
+    {/* Right Section (Calculations - 1 Column) */}
+    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
+      <h3 style={{ textAlign: 'center' }}>Calculations</h3>
+      <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+      <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+      <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
+      <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
+      <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+
+      {/* QD Discount Checkbox */}
+      <div className="qd-checkbox" style={{ marginTop: '20px' }}>
+        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
+          <input 
+            type="checkbox" 
+            name="qdDiscount" 
+            checked={formData.qdDiscount || false} 
+            onChange={handleChange} 
+            style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
+          />
+          QD Discount
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  {/* Submit Button */}
+  <button type="submit">Submit</button>
+</form>
         </div>
       )}
-    </div>
-  );
-}
+  <div>
+</div>    
