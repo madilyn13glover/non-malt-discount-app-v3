@@ -147,40 +147,47 @@ export default function TwoPageFormApp() {
       </div>
 
       {/* Region, State, Wholesaler */}
-      <div className="input-group">
-        <label>Region:</label>
-        <select name="region" value={formData.region} onChange={handleChange}>
-          <option value="">Select Region</option>
-          <option value="Region1">Region 1</option>
-          <option value="Region2">Region 2</option>
-        </select>
-      </div>
-      <div className="input-group">
-        <label>State:</label>
-        <select name="state" value={formData.state} onChange={handleChange}>
-          <option value="">Select State</option>
-          <option value="State1">State 1</option>
-          <option value="State2">State 2</option>
-        </select>
-      </div>
-      <div className="input-group">
-        <label>Wholesaler:</label>
-        <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
-          <option value="">Select Wholesaler</option>
-          <option value="Wholesaler1">Wholesaler 1</option>
-          <option value="Wholesaler2">Wholesaler 2</option>
-        </select>
-      </div>
+      <div className="form-section three-cols no-overlap" 
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Region:</label>
+    <select name="region" value={formData.region} onChange={handleChange}>
+      <option value="">Select Region</option>
+      <option value="Region1">Region 1</option>
+      <option value="Region2">Region 2</option>
+    </select>
+  </div>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>State:</label>
+    <select name="state" value={formData.state} onChange={handleChange}>
+      <option value="">Select State</option>
+      <option value="State1">State 1</option>
+      <option value="State2">State 2</option>
+    </select>
+  </div>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Wholesaler:</label>
+    <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
+      <option value="">Select Wholesaler</option>
+      <option value="Wholesaler1">Wholesaler 1</option>
+      <option value="Wholesaler2">Wholesaler 2</option>
+    </select>
+  </div>
+</div>
+
 
       {/* Start Date, End Date */}
-      <div className="input-group">
-        <label>Start Date:</label>
-        <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
-      </div>
-      <div className="input-group">
-        <label>End Date:</label>
-        <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
-      </div>
+      <div className="form-section two-cols no-overlap" 
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Start Date:</label>
+    <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+  </div>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>End Date:</label>
+    <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
+  </div>
+</div>
 
       {/* Promoted PTR, AB Allowance % and AB Allowance */}
       <div className="input-group">
