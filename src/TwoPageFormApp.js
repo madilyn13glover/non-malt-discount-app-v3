@@ -4,8 +4,8 @@ export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
-  
-  const [showQDTable, setShowQDTable] = useState(false);
+  const [showQDPopup, setShowQDPopup] = useState(false);
+
     
     const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
@@ -13,7 +13,7 @@ export default function TwoPageFormApp() {
     chainParent: '', chain: '',
     startDate: today, endDate: defaultEndDate,
     promotedPTR: '', abPercentage: '', abAllowance: '',
-    qdDiscount: false 
+    qdDiscount: false
   });
 
   const handleChange = (e) => {
@@ -202,29 +202,29 @@ export default function TwoPageFormApp() {
     <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
   </div>
 
-  {/* ✅ Checkbox Positioned Next to Calculations */}
   <div className="qd-checkbox">
-    <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
-      <input 
-        type="checkbox" 
-        name="qdDiscount" 
-        checked={formData.qdDiscount || false} 
-        onChange={handleChange} 
-        style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
-      />
-      QD Discount
-    </label>
-  </div>
-</div>
-      
-
+  <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
+    <input 
+      type="checkbox" 
+      checked={showQDPopup} 
+      onChange={() => setShowQDPopup(prev => !prev)} 
+      style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
+    />
+    QD Discount
+  </label>
+</div>  
 {/* Submit Button */}
 <button type="submit">Submit</button>
 
 </form>
 </div>
-);{formData.qdDiscount && (
-  <div className="qd-popup" style={{ position: 'fixed', top: '20%', left: '50%', transform: 'translate(-50%, 0)', width: '500px', backgroundColor: 'white', padding: '20px', border: '2px solid black', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', zIndex: '1000' }}>
+);
+{showQDPopup && (
+  <div className="qd-popup" style={{
+    position: 'fixed', top: '20%', left: '50%', transform: 'translate(-50%, 0)',
+    width: '500px', backgroundColor: 'white', padding: '20px', border: '2px solid black',
+    borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', zIndex: '1000'
+  }}>
     <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>QD Discount Table</h2>
     <table style={{ width: '100%', borderCollapse: 'collapse' }}>
       <thead>
@@ -244,7 +244,12 @@ export default function TwoPageFormApp() {
         </tr>
       </tbody>
     </table>
-    <button onClick={() => setFormData(prev => ({ ...prev, qdDiscount: false }))} style={{ display: 'block', margin: '10px auto', padding: '10px', backgroundColor: 'goldenrod', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Close</button>
+    <button onClick={() => setShowQDPopup(false)} style={{
+      display: 'block', margin: '10px auto', padding: '10px',
+      backgroundColor: 'goldenrod', border: 'none', borderRadius: '5px', cursor: 'pointer'
+    }}>Close</button>
   </div>
 )}
+
+
 }
