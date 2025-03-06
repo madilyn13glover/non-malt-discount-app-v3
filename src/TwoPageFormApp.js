@@ -36,7 +36,8 @@ export default function TwoPageFormApp() {
       region: '', state: '', wholesaler: '',
       chainParent: '', chain: '',
       startDate: '', endDate: '',
-      promotedPTR: '', abPercentage: '', abAllowance: ''
+      promotedPTR: '', abPercentage: '', abAllowance: '',
+      qdDiscount: false 
     });
   };
 
@@ -192,6 +193,7 @@ export default function TwoPageFormApp() {
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+  {/* Calculations Section */}
   <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
     <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
     <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
@@ -202,23 +204,47 @@ export default function TwoPageFormApp() {
 
   {/* ✅ Checkbox Positioned Next to Calculations */}
   <div className="qd-checkbox">
-    <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px' }}>
+    <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
       <input 
         type="checkbox" 
         name="qdDiscount" 
         checked={formData.qdDiscount || false} 
         onChange={handleChange} 
-        style={{ marginRight: '10px', width: '18px', height: '18px' }} 
+        style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
       />
       QD Discount
     </label>
   </div>
-</div>      
+</div>
+      
 
 {/* Submit Button */}
 <button type="submit">Submit</button>
 
 </form>
 </div>
-);
+);{formData.qdDiscount && (
+  <div className="qd-popup" style={{ position: 'fixed', top: '20%', left: '50%', transform: 'translate(-50%, 0)', width: '500px', backgroundColor: 'white', padding: '20px', border: '2px solid black', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', zIndex: '1000' }}>
+    <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>QD Discount Table</h2>
+    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <thead>
+        <tr>
+          <th style={{ border: '1px solid black', padding: '5px' }}>QD MIN</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>QD MAX</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>PPTR</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>% Allowance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ border: '1px solid black', padding: '5px' }}>1</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>9999</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>$0.00</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>50%</td>
+        </tr>
+      </tbody>
+    </table>
+    <button onClick={() => setFormData(prev => ({ ...prev, qdDiscount: false }))} style={{ display: 'block', margin: '10px auto', padding: '10px', backgroundColor: 'goldenrod', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Close</button>
+  </div>
+)}
 }
