@@ -7,13 +7,13 @@ export default function TwoPageFormApp() {
 
   const [showQDPopup, setShowQDPopup] = useState(false);
 
-$1
+  const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
     chainParent: '', chain: '',
     startDate: today, endDate: defaultEndDate,
     promotedPTR: '', abPercentage: '', abAllowance: ''
-  });
+  })
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,30 +41,6 @@ $1
       { id: '002', status: 'Approved', date: '2025-03-03' },
       { id: '003', status: 'Rejected', date: '2025-03-02' }
     ];
-    return (
-      <div className="container">
-        <h2 className="title">Submitted Requests</h2>
-        <table className="submitted-requests-table" style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
-          <thead>
-            <tr style={{ backgroundColor: '#ddd', textAlign: 'left' }}>
-              <th style={{ padding: '10px', borderBottom: '2px solid black' }}>Request ID</th>
-              <th style={{ padding: '10px', borderBottom: '2px solid black' }}>Status</th>
-              <th style={{ padding: '10px', borderBottom: '2px solid black' }}>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {submittedRequests.map(request => (
-              <tr key={request.id}>
-                <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{request.id}</td>
-                <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{request.status}</td>
-                <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{request.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => setPage('home')}>Back</button>
-      </div>
-    );
     return (
       <div className="container">
         <h2 className="title">Submitted Requests</h2>
@@ -146,7 +122,8 @@ $1
             </select>
           </div>
         </div>
-        <button type="submit">Submit</button>
+      </form>
+      <button type="submit">Submit</button>
         <div className="input-group">
     <label>
       <input type="checkbox" checked={showQDPopup} onChange={() => setShowQDPopup(!showQDPopup)} /> QD Discount
