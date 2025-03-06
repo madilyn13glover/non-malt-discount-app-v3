@@ -1,131 +1,80 @@
 import { useState } from 'react';
 
-// Define UI Components Locally
-const Card = ({ children, className }) => (
-  <div className={`rounded-lg shadow-md p-4 border ${className}`}>{children}</div>
-);
-
-const CardContent = ({ children }) => (
-  <div className="p-4">{children}</div>
-);
-
-const Button = ({ type = "button", className, children, onClick }) => (
-  <button
-    type={type}
-    className={`px-4 py-2 rounded-md ${className}`}
-    onClick={onClick}
-  >
-    {children}
-  </button>
-);
-
-const Checkbox = ({ name, checked, onChange }) => (
-  <input
-    type="checkbox"
-    name={name}
-    checked={checked}
-    onChange={onChange}
-    className="w-5 h-5"
-  />
-);
-
 export default function TwoPageFormApp() {
-  const [formData, setFormData] = useState({ startDate: '', abAllowance: '', promotedPTR: '', endDate: '', chainParent: '',
-    recoFLPTR: 0, pptrDiscount: 0, abAllowance: 0, abPercentage: 0,
-    promotedPTR: '', allowance: '', percentage: '', discount: '', discountDollar: '', totalDiscount: 0
+  const [page, setPage] = useState('home');
+  const today = new Date().toISOString().split('T')[0];
+  const defaultEndDate = `${new Date().getFullYear()}-12-31`;
+  
+  const [formData, setFormData] = useState({
+    family: '', brands: '', package: '', 
+    region: '', state: '', wholesaler: '', 
+    startDate: today, endDate: defaultEndDate,
+    promotedPTR: '', abPercentage: '', abAllowance: ''
   });
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let updatedValue = parseFloat(value) || 0;
-    setFormData(prev => {
-      const updatedForm = { ...prev, [name]: updatedValue };
-      return updatedForm;
-    });
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setPage('confirmation');
   };
 
+  const handleReset = () => {
+    setFormData({
+      family: '', brands: '', package: '',
+      region: '', state: '', wholesaler: '',
+      startDate: today, endDate: defaultEndDate,
+      promotedPTR: '', abPercentage: '', abAllowance: ''
+    });
+  };
+
+  if (page === 'requestScreen') {
+    return (
+      <div className="form-container" style={{ maxWidth: '900px', margin: '0 auto', border: 'none', padding: '20px' }}>
+        <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
+        <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+          <button onClick={() => setPage('home')} className="back-button">Back</button>
+          <button onClick={handleReset} className="reset-button">Reset</button>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <label>Family:</label>
+          <input type="text" name="family" value={formData.family} onChange={handleChange} />
+          <label>Brands:</label>
+          <input type="text" name="brands" value={formData.brands} onChange={handleChange} />
+          <label>Package:</label>
+          <input type="text" name="package" value={formData.package} onChange={handleChange} />
+          <label>Region:</label>
+          <input type="text" name="region" value={formData.region} onChange={handleChange} />
+          <label>State:</label>
+          <input type="text" name="state" value={formData.state} onChange={handleChange} />
+          <label>Wholesaler:</label>
+          <input type="text" name="wholesaler" value={formData.wholesaler} onChange={handleChange} />
+          <label>Start Date:</label>
+          <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+          <label>End Date:</label>
+          <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
+          <label>Promoted PTR:</label>
+          <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
+          <label>AB Allowance Percent:</label>
+          <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
+          <label>AB Allowance:</label>
+          <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex justify-center items-start min-h-screen bg-white text-black overflow-auto p-4">
-      <Card className="w-[1400px] p-8 bg-white border-black">
-        <CardContent>
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-center mb-4 uppercase flex-1">NON-MALT DISCOUNT REQUEST APP</h1>
-            <Button type="reset" className="bg-gray-500 text-white">Reset</Button>
-          </div>
-      
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-              <div className="grid grid-cols-3 gap-4 col-span-2 border-b pb-4">
-                <div className="flex flex-col">
-                  <label className="text-black mb-1">Family:</label>
-                  <select name="family" value={formData.family} onChange={handleChange} className="p-2 border rounded bg-white text-black">
-                    <option value="">Select Family</option>
-                    <option value="Family1">Family 1</option>
-                    <option value="Family2">Family 2</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="text-black mb-1">Brands:</label>
-                  <select name="brands" value={formData.brands} onChange={handleChange} className="p-2 border rounded bg-white text-black">
-                    <option value="">Select Brands</option>
-                    <option value="Brand1">Brand 1</option>
-                    <option value="Brand2">Brand 2</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="text-black mb-1">Package:</label>
-                  <select name="package" value={formData.package} onChange={handleChange} className="p-2 border rounded bg-white text-black">
-                    <option value="">Select Package</option>
-                    <option value="Package1">Package 1</option>
-                    <option value="Package2">Package 2</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 col-span-2 border-b pb-4">
-                <div className="flex flex-col">
-                  <label className="text-black mb-1">Region:</label>
-                  <select name="region" value={formData.region} onChange={handleChange} className="p-2 border rounded bg-white text-black">
-                    <option value="">Select Region</option>
-                    <option value="Region1">Region 1</option>
-                    <option value="Region2">Region 2</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="text-black mb-1">State:</label>
-                  <select name="state" value={formData.state} onChange={handleChange} className="p-2 border rounded bg-white text-black">
-                    <option value="">Select State</option>
-                    <option value="State1">State 1</option>
-                    <option value="State2">State 2</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="text-black mb-1">Wholesaler:</label>
-                  <select name="wholesaler" value={formData.wholesaler} onChange={handleChange} className="p-2 border rounded bg-white text-black">
-                    <option value="">Select Wholesaler</option>
-                    <option value="Wholesaler1">Wholesaler 1</option>
-                    <option value="Wholesaler2">Wholesaler 2</option>
-                  </select>
-                </div>
-              </div>
-
-              <Button type="submit" className="col-span-2 bg-gold text-black">Submit</Button>
-            </form>
-          ) : (
-            <div className="text-center">
-              <h2 className="text-xl mb-4 text-black">Confirmation</h2>
-              <pre className="text-white">{JSON.stringify(formData, null, 2)}</pre>
-              <Button onClick={() => setSubmitted(false)} className="mt-4 bg-gold text-black">Go Back</Button>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+    <div className="home-screen">
+      <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
+      <div className="button-container" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '20px' }}>
+        <button onClick={() => setPage('requestSandbox')}>See Submitted Requests</button>
+        <button onClick={() => setPage('requestScreen')}>Submit Request</button>
+      </div>
     </div>
   );
 }
