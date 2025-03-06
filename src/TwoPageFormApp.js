@@ -215,7 +215,6 @@ export default function TwoPageFormApp() {
 </div>  
 {/* Submit Button */}
 <button type="submit">Submit</button>
-
 </form>
 </div>
 );
@@ -250,6 +249,4 @@ export default function TwoPageFormApp() {
     }}>Close</button>
   </div>
 )}
-
-
 }
