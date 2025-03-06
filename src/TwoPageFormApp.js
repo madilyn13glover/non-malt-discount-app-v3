@@ -5,7 +5,7 @@ export default function TwoPageFormApp() {
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
   
-  const [showQDTable, setShowQDTable] = useState(false); // State for showing QD table
+  const [showQDTable, setShowQDTable] = useState(false);
     
     const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
@@ -33,7 +33,16 @@ export default function TwoPageFormApp() {
       startDate: '', endDate: '',
       promotedPTR: '', abPercentage: '', abAllowance: ''
     });
-  };
+  };const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+    if (name === 'qdDiscount') {
+      setShowQDTable(checked); // Show or hide QD table
+    }
+};
 
   if (page === 'requestSandbox') {
     return (
