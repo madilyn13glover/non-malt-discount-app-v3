@@ -106,7 +106,7 @@ export default function TwoPageFormApp() {
  {/* Family, Brand, and Package on the Same Line */}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Family:</label>
     <select name="family" value={formData.family} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -116,7 +116,7 @@ export default function TwoPageFormApp() {
     </select>
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Brands:</label>
     <select name="brands" value={formData.brands} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -126,7 +126,7 @@ export default function TwoPageFormApp() {
     </select>
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Package:</label>
     <select name="package" value={formData.package} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -142,7 +142,7 @@ export default function TwoPageFormApp() {
   {/* Chain Parent & Chain on the Same Line */}
 <div className="form-section two-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Chain Parent:</label>
     <select name="chainParent" value={formData.chainParent} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -152,7 +152,7 @@ export default function TwoPageFormApp() {
     </select>
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Chain:</label>
     <select name="chain" value={formData.chain} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -167,7 +167,7 @@ export default function TwoPageFormApp() {
       {/* Region, State, Wholesaler on the Same Line */}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Region:</label>
     <select name="region" value={formData.region} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -177,7 +177,7 @@ export default function TwoPageFormApp() {
     </select>
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>State:</label>
     <select name="state" value={formData.state} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -187,7 +187,7 @@ export default function TwoPageFormApp() {
     </select>
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Wholesaler:</label>
     <select name="wholesaler" value={formData.wholesaler} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
@@ -201,11 +201,11 @@ export default function TwoPageFormApp() {
       {/* Start Date, End Date */}
       <div className="form-section two-cols no-overlap" 
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Start Date:</label>
     <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
   </div>
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>End Date:</label>
     <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
   </div>
@@ -213,19 +213,19 @@ export default function TwoPageFormApp() {
       {/* Promoted PTR, AB Allowance %, and AB Allowance on the Same Line */}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>Promoted PTR:</label>
     <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange}
            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>AB Allowance %:</label>
     <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange}
            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
   </div>
 
-  <div className="input-group" style={{ flex: '1' }}>
+  <div className="input-group" style={{ flex: '2' }}>
     <label>AB Allowance:</label>
     <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange}
            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
