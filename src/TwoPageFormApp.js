@@ -70,33 +70,25 @@ export default function TwoPageFormApp() {
             </div>
           </div>
 
-          <div className="form-section three-cols" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
+          <div className="form-section two-cols" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
             <div className="input-group">
-              <label>Region:</label>
-              <select name="region" value={formData.region} onChange={handleChange}>
-                <option value="">Select Region</option>
-                <option value="Region1">Region 1</option>
-                <option value="Region2">Region 2</option>
+              <label>Chain Parent:</label>
+              <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
+                <option value="">Select Chain Parent</option>
+                <option value="ChainParent1">Chain Parent 1</option>
+                <option value="ChainParent2">Chain Parent 2</option>
               </select>
             </div>
             <div className="input-group">
-              <label>State:</label>
-              <select name="state" value={formData.state} onChange={handleChange}>
-                <option value="">Select State</option>
-                <option value="State1">State 1</option>
-                <option value="State2">State 2</option>
-              </select>
-            </div>
-            <div className="input-group">
-              <label>Wholesaler:</label>
-              <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
-                <option value="">Select Wholesaler</option>
-                <option value="Wholesaler1">Wholesaler 1</option>
-                <option value="Wholesaler2">Wholesaler 2</option>
+              <label>Chain:</label>
+              <select name="chain" value={formData.chain} onChange={handleChange}>
+                <option value="">Select Chain</option>
+                <option value="Chain1">Chain 1</option>
+                <option value="Chain2">Chain 2</option>
               </select>
             </div>
           </div>
-          
+
           <div className="form-section two-cols" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
             <div className="input-group">
               <label>Start Date:</label>
@@ -122,6 +114,14 @@ export default function TwoPageFormApp() {
               <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
             </div>
           </div>
+
+          <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px', marginBottom: '20px' }}>
+            <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+            <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+            <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
+            <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
+            <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+          </div>
           <button type="submit">Submit</button>
         </form>
       </div>
@@ -129,5 +129,4 @@ export default function TwoPageFormApp() {
   }
   return null;
 }
-
 
