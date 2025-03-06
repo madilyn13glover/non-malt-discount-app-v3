@@ -103,7 +103,7 @@ export default function TwoPageFormApp() {
     {/* Left Section (Form Fields - 3 Columns) */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
       {/* Family, Brands, Package */}
-      {/* Family, Brand, and Package on the Same Line */}
+ {/* Family, Brand, and Package on the Same Line */}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
   <div className="input-group" style={{ flex: '1' }}>
@@ -139,7 +139,7 @@ export default function TwoPageFormApp() {
 
 
       {/* Chain Parent, Chain */}
-      {/* Chain Parent & Chain on the Same Line */}
+  {/* Chain Parent & Chain on the Same Line */}
 <div className="form-section two-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
   <div className="input-group" style={{ flex: '1' }}>
@@ -164,28 +164,33 @@ export default function TwoPageFormApp() {
 </div>
 
 
-      {/* Region, State, Wholesaler */}
-      <div className="form-section three-cols no-overlap" 
-     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      {/* Region, State, Wholesaler on the Same Line */}
+<div className="form-section three-cols no-overlap"
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
   <div className="input-group" style={{ flex: '1' }}>
     <label>Region:</label>
-    <select name="region" value={formData.region} onChange={handleChange}>
+    <select name="region" value={formData.region} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
       <option value="">Select Region</option>
       <option value="Region1">Region 1</option>
       <option value="Region2">Region 2</option>
     </select>
   </div>
+
   <div className="input-group" style={{ flex: '1' }}>
     <label>State:</label>
-    <select name="state" value={formData.state} onChange={handleChange}>
+    <select name="state" value={formData.state} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
       <option value="">Select State</option>
       <option value="State1">State 1</option>
       <option value="State2">State 2</option>
     </select>
   </div>
+
   <div className="input-group" style={{ flex: '1' }}>
     <label>Wholesaler:</label>
-    <select name="wholesaler" value={formData.wholesaler} onChange={handleChange}>
+    <select name="wholesaler" value={formData.wholesaler} onChange={handleChange} 
+            style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
       <option value="">Select Wholesaler</option>
       <option value="Wholesaler1">Wholesaler 1</option>
       <option value="Wholesaler2">Wholesaler 2</option>
@@ -205,21 +210,28 @@ export default function TwoPageFormApp() {
     <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
   </div>
 </div>
+      {/* Promoted PTR, AB Allowance %, and AB Allowance on the Same Line */}
+<div className="form-section three-cols no-overlap"
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>Promoted PTR:</label>
+    <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange}
+           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+  </div>
 
-      {/* Promoted PTR, AB Allowance % and AB Allowance */}
-      <div className="input-group">
-        <label>Promoted PTR:</label>
-        <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange} />
-      </div>
-      <div className="input-group">
-        <label>AB Allowance Percent:</label>
-        <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange} />
-      </div>
-      <div className="input-group">
-        <label>AB Allowance:</label>
-        <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange} />
-      </div>
-    </div>
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>AB Allowance %:</label>
+    <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange}
+           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+  </div>
+
+  <div className="input-group" style={{ flex: '1' }}>
+    <label>AB Allowance:</label>
+    <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange}
+           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+  </div>
+</div>
+</div>
 
     {/* Right Section (Calculations - 1 Column) */}
     <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
