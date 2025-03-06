@@ -5,7 +5,7 @@ export default function TwoPageFormApp() {
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
   
-  
+  const [showQDTable, setShowQDTable] = useState(false); // State for showing QD table
     
     const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
@@ -193,9 +193,43 @@ export default function TwoPageFormApp() {
           <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
           <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
         </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-}
+  {/* QD Discount Checkbox */}
+  <div className="form-section" style={{ marginBottom: '20px' }}>
+  <label>
+    <input type="checkbox" name="qdDiscount" checked={formData.qdDiscount} onChange={handleChange} />
+    QD Discount
+  </label>
+</div>
 
+{/* Show QD Table if checked */}
+{showQDTable && (
+  <div className="qd-table-popup" style={{ border: '1px solid black', padding: '10px', marginBottom: '20px', backgroundColor: 'white', borderRadius: '5px' }}>
+    <h3>QD Discount Table</h3>
+    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <thead>
+        <tr>
+          <th style={{ border: '1px solid black', padding: '5px' }}>QD MIN</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>QD MAX</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>PPTR</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>% Allowance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ border: '1px solid black', padding: '5px' }}>1</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>9999</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>$0.00</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>50%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+)}
+
+{/* Submit Button */}
+<button type="submit">Submit</button>
+
+</form>
+</div>
+);
+}
