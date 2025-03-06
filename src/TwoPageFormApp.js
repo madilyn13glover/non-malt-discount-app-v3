@@ -4,7 +4,7 @@ export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
-  const [showQDPopup, setShowQDPopup] = useState(false);
+  
 
     
     const [formData, setFormData] = useState({
@@ -124,7 +124,7 @@ export default function TwoPageFormApp() {
             </select>
           </div>
         </div> 
-        <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+    
           <div className="input-group">
             <label>Chain Parent:</label>
             <select name="chainParent" value={formData.chainParent} onChange={handleChange}>
@@ -141,6 +141,14 @@ export default function TwoPageFormApp() {
               <option value="Chain2">Chain 2</option>
             </select>
           </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          {/* Calculations Section */}
+          <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
+            <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+            <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+            <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
+            <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
+            <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
         </div>
         <div className="form-section three-cols no-overlap" style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div className="input-group">
@@ -193,13 +201,37 @@ export default function TwoPageFormApp() {
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          {/* Calculations Section */}
-          <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
-            <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-            <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-            <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
-            <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-            <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+            {formData.qdDiscount && (
+  <div className="qd-popup" style={{ 
+    position: 'fixed', top: '20%', left: '50%', transform: 'translate(-50%, 0)', 
+    width: '500px', backgroundColor: 'white', padding: '20px', border: '2px solid black',
+    borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', zIndex: '1000'
+  }}>
+    <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>QD Discount Table</h2>
+    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <thead>
+        <tr>
+          <th style={{ border: '1px solid black', padding: '5px' }}>QD MIN</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>QD MAX</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>PPTR</th>
+          <th style={{ border: '1px solid black', padding: '5px' }}>% Allowance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ border: '1px solid black', padding: '5px' }}>1</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>9999</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>$0.00</td>
+          <td style={{ border: '1px solid black', padding: '5px' }}>50%</td>
+        </tr>
+      </tbody>
+    </table>
+    <button onClick={() => setFormData(prev => ({ ...prev, qdDiscount: false }))} style={{
+      display: 'block', margin: '10px auto', padding: '10px',
+      backgroundColor: 'goldenrod', border: 'none', borderRadius: '5px', cursor: 'pointer'
+    }}>Close</button>
+  </div>
+)}
           </div>
 
           {/* QD Discount Checkbox */}
