@@ -130,7 +130,7 @@ export default function TwoPageFormApp() {
     <label>Package:</label>
     <select name="package" value={formData.package} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
-      <option value="">Select Package</option>
+      <option value="">Select PKG</option>
       <option value="Package1">Package 1</option>
       <option value="Package2">Package 2</option>
     </select>
@@ -191,7 +191,7 @@ export default function TwoPageFormApp() {
     <label>Wholesaler:</label>
     <select name="wholesaler" value={formData.wholesaler} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
-      <option value="">Select Wholesaler</option>
+      <option value="">Select WHSL</option>
       <option value="Wholesaler1">Wholesaler 1</option>
       <option value="Wholesaler2">Wholesaler 2</option>
     </select>
@@ -234,7 +234,7 @@ export default function TwoPageFormApp() {
 </div>
 
     {/* Right Section (Calculations - 1 Column) */}
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}>
+    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '5px' }}>
       <h3 style={{ textAlign: 'center' }}>Calculations</h3>
       <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
       <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
