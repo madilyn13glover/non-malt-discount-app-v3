@@ -233,8 +233,8 @@ export default function TwoPageFormApp() {
 </div>
 </div>
 
-    {/* Right Section (Calculations - 1 Column) */}
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '5px' }}>
+    
+    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '5px', alignself:'Start'}}>
       <h3 style={{ textAlign: 'center' }}>Calculations</h3>
       <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
       <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
@@ -242,7 +242,7 @@ export default function TwoPageFormApp() {
       <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
       <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
 
-      {/* QD Discount Checkbox */}
+      
       <div className="qd-checkbox" style={{ marginTop: '20px' }}>
         <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
           <input 
