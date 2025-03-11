@@ -191,7 +191,7 @@ export default function TwoPageFormApp() {
     <label>Wholesaler:</label>
     <select name="wholesaler" value={formData.wholesaler} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
-      <option value="">Select WHSL</option>
+      <option value="">Select WSLR</option>
       <option value="Wholesaler1">Wholesaler 1</option>
       <option value="Wholesaler2">Wholesaler 2</option>
     </select>
@@ -234,7 +234,7 @@ export default function TwoPageFormApp() {
 </div>
 
     
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '5px', alignself:'Start'}}>
+    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '5px', alignself:'start'}}>
       <h3 style={{ textAlign: 'center' }}>Calculations</h3>
       <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
       <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
