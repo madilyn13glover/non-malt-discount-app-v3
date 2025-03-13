@@ -71,7 +71,7 @@ export default function TwoPageFormApp() {
     return (
       <div className="home-screen">
         <h1 className="title2">NON-MALT DISCOUNT REQUEST APP</h1>
-        <div className="button-container" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '20px' }}>
+        <div className="button-container" style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '15px' }}>
           <button onClick={() => setPage('requestSandbox')}>See Submitted Requests</button>
           <button onClick={() => setPage('requestScreen')}>Submit Request</button>
         </div>
