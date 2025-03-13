@@ -13,7 +13,7 @@ export default function TwoPageFormApp() {
     chainParent: '', chain: '',
     startDate: today, endDate: defaultEndDate,
     promotedPTR: '', abPercentage: '', abAllowance: '',
-    qdDiscount: false
+    qdDiscount: false, TusCheck: false
   });
 
   const handleChange = (e) => {
@@ -199,7 +199,7 @@ export default function TwoPageFormApp() {
   <div className="tus-checkbox" style={{ marginTop: '20px' }}>
         <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
           <input 
-            type="checkbox" 
+            type="checkbox2" 
             name="TUS" 
             checked={formData.TusCheck || false} 
             onChange={handleChange} 
@@ -246,7 +246,7 @@ export default function TwoPageFormApp() {
 </div>
 
     
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '5px', alignself:'start'}}>
+    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '15px', alignself:'start'}}>
       <h3 style={{ textAlign: 'center' }}>Calculations</h3>
       <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
       <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
@@ -262,7 +262,7 @@ export default function TwoPageFormApp() {
             name="qdDiscount" 
             checked={formData.qdDiscount || false} 
             onChange={handleChange} 
-            style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
+            style={{ marginRight: '20px', width: '18px', height: '18px', cursor: 'pointer' }} 
           />
           QD Discount
         </label>
