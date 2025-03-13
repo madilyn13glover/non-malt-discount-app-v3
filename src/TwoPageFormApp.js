@@ -171,7 +171,7 @@ export default function TwoPageFormApp() {
     <label>Region:</label>
     <select name="region" value={formData.region} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
-      <option value="">Select Region</option>
+      <option value="">Region</option>
       <option value="Region1">Region 1</option>
       <option value="Region2">Region 2</option>
     </select>
@@ -181,7 +181,7 @@ export default function TwoPageFormApp() {
     <label>State:</label>
     <select name="state" value={formData.state} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
-      <option value="">Select State</option>
+      <option value="">State</option>
       <option value="State1">State 1</option>
       <option value="State2">State 2</option>
     </select>
@@ -191,7 +191,7 @@ export default function TwoPageFormApp() {
     <label>Wholesaler:</label>
     <select name="wholesaler" value={formData.wholesaler} onChange={handleChange} 
             style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}>
-      <option value="">Select WSLR</option>
+      <option value="">WSLR</option>
       <option value="Wholesaler1">Wholesaler 1</option>
       <option value="Wholesaler2">Wholesaler 2</option>
     </select>
