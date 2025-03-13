@@ -199,7 +199,7 @@ export default function TwoPageFormApp() {
   <div className="tus-checkbox" style={{ marginTop: '20px' }}>
         <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
           <input 
-            type="checkbox2" 
+            type="checkbox" 
             name="TUS" 
             checked={formData.TusCheck || false} 
             onChange={handleChange} 
