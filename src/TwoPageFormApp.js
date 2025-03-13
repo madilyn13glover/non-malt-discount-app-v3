@@ -37,7 +37,7 @@ export default function TwoPageFormApp() {
       chainParent: '', chain: '',
       startDate: '', endDate: '',
       promotedPTR: '', abPercentage: '', abAllowance: '',
-      qdDiscount: false 
+      qdDiscount: false, TusCheck: false
     });
   };
 
@@ -196,16 +196,16 @@ export default function TwoPageFormApp() {
       <option value="Wholesaler2">Wholesaler 2</option>
     </select>
   </div>
-  <div className="qd-checkbox" style={{ marginTop: '20px' }}>
+  <div className="tus-checkbox" style={{ marginTop: '20px' }}>
         <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
           <input 
             type="checkbox" 
             name="TUS" 
-            checked={formData.qdDiscount || false} 
+            checked={formData.TusCheck || false} 
             onChange={handleChange} 
             style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
           />
-          QD Discount
+          TUS
         </label>
       </div>
     </div>
