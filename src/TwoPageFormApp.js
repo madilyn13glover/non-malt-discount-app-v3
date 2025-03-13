@@ -196,7 +196,19 @@ export default function TwoPageFormApp() {
       <option value="Wholesaler2">Wholesaler 2</option>
     </select>
   </div>
-</div>
+  <div className="qd-checkbox" style={{ marginTop: '20px' }}>
+        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
+          <input 
+            type="checkbox" 
+            name="TUS" 
+            checked={formData.qdDiscount || false} 
+            onChange={handleChange} 
+            style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
+          />
+          QD Discount
+        </label>
+      </div>
+    </div>
 
       {/* Start Date, End Date */}
       <div className="form-section two-cols no-overlap" 
