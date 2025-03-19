@@ -18,12 +18,26 @@ export default function TwoPageFormApp() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-};
-
+  
+    setFormData((prev) => {
+      let updatedData = { 
+        ...prev, 
+        [name]: type === "checkbox" ? checked : value 
+      };
+  
+      // If QD Discount is checked, clear and disable amount fields
+      if (name === "qdDiscount" && checked) {
+        updatedData = {
+          ...updatedData,
+          promotedPTR: "", 
+          abPercentage: "", 
+          abAllowance: ""
+        };
+      }
+  
+      return updatedData;
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -225,22 +239,53 @@ export default function TwoPageFormApp() {
       {/* Promoted PTR, AB Allowance %, and AB Allowance on the Same Line */}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+
   <div className="input-group" style={{ flex: '2' }}>
     <label>Promoted PTR:</label>
-    <input type="number" name="promotedPTR" value={formData.promotedPTR} onChange={handleChange}
-           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+    <input 
+      type="number" 
+      name="promotedPTR" 
+      value={formData.promotedPTR} 
+      onChange={handleChange}
+      disabled={formData.qdDiscount} 
+      style={{ 
+        width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc',
+        backgroundColor: formData.qdDiscount ? "#e0e0e0" : "white",
+        cursor: formData.qdDiscount ? "not-allowed" : "text"
+      }} 
+    />
   </div>
 
   <div className="input-group" style={{ flex: '2' }}>
     <label>AB Allowance %:</label>
-    <input type="number" name="abPercentage" value={formData.abPercentage} onChange={handleChange}
-           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+    <input 
+      type="number" 
+      name="abPercentage" 
+      value={formData.abPercentage} 
+      onChange={handleChange}
+      disabled={formData.qdDiscount} 
+      style={{ 
+        width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc',
+        backgroundColor: formData.qdDiscount ? "#e0e0e0" : "white",
+        cursor: formData.qdDiscount ? "not-allowed" : "text"
+      }} 
+    />
   </div>
 
   <div className="input-group" style={{ flex: '2' }}>
     <label>AB Allowance:</label>
-    <input type="number" name="abAllowance" value={formData.abAllowance} onChange={handleChange}
-           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+    <input 
+      type="number" 
+      name="abAllowance" 
+      value={formData.abAllowance} 
+      onChange={handleChange}
+      disabled={formData.qdDiscount} 
+      style={{ 
+        width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc',
+        backgroundColor: formData.qdDiscount ? "#e0e0e0" : "white",
+        cursor: formData.qdDiscount ? "not-allowed" : "text"
+      }} 
+    />
   </div>
 </div>
 </div>
