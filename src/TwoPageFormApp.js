@@ -24,37 +24,36 @@ export default function TwoPageFormApp() {
         ...prev, 
         [name]: type === "checkbox" ? checked : value 
       };
-  // ✅ If QD Discount is checked, apply static QB values & grey out fields
-  if (name === "qdDiscount" && checked) {
-    const qbValues = { 
-      promotedPTR: "5.00", 
-      abPercentage: "10%", 
-      abAllowance: "2.50" 
-    }; // Static QB values
-
-    setQbData(qbValues); // Store QB values for table display
-
-    updatedData = {
-      ...updatedData,
-      promotedPTR: qbValues.promotedPTR, 
-      abPercentage: qbValues.abPercentage, 
-      abAllowance: qbValues.abAllowance
-    };
-  } 
-  // ✅ If unchecked, clear QB data & enable fields
-  else {
-    setQbData(null);
-    updatedData = {
-      ...updatedData,
-      promotedPTR: "", 
-      abPercentage: "", 
-      abAllowance: ""
-    };
-  }
-
-  return updatedData;
-});
-};
+  
+      // ✅ If QD Discount is checked, disable fields & show QD table
+      if (name === "qdDiscount" && checked) {
+        updatedData = {
+          ...updatedData,
+          promotedPTR: "5.00",  // Example static value (replace if needed)
+          abPercentage: "10%",
+          abAllowance: "2.50"
+        };
+        setQbData({  // Set QD Table values (empty so user can edit)
+          qdMin: "",
+          qdMax: "",
+          pptr: "",
+          allowance5: ""
+        });
+      } 
+      // ✅ If unchecked, enable fields & hide QD table
+      else {
+        updatedData = {
+          ...updatedData,
+          promotedPTR: "", 
+          abPercentage: "", 
+          abAllowance: ""
+        };
+        setQbData(null); // Hide QD table
+      }
+  
+      return updatedData;
+    });
+  };
       
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -253,24 +252,61 @@ export default function TwoPageFormApp() {
     <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
   </div>
 </div>
-{/* QD Table - Appears Only When QD Discount is Checked */}
-{formData.qdDiscount && qbData && (
-  <table border="1" style={{ width: "100%", marginTop: "20px", borderCollapse: "collapse" }}>
-    <thead>
-      <tr style={{ backgroundColor: "#f0f0f0" }}>
-        <th style={{ padding: "10px", border: "1px solid #ccc" }}>Promoted PTR</th>
-        <th style={{ padding: "10px", border: "1px solid #ccc" }}>AB Allowance %</th>
-        <th style={{ padding: "10px", border: "1px solid #ccc" }}>AB Allowance</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style={{ padding: "10px", border: "1px solid #ccc" }}>{qbData.promotedPTR}</td>
-        <td style={{ padding: "10px", border: "1px solid #ccc" }}>{qbData.abPercentage}</td>
-        <td style={{ padding: "10px", border: "1px solid #ccc" }}>{qbData.abAllowance}</td>
-      </tr>
-    </tbody>
-  </table>
+{/* QD Table Appears Below Calculations */}
+{formData.qdDiscount && (
+  <div style={{ marginTop: "20px" }}>
+    <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
+    <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
+      <thead>
+        <tr style={{ backgroundColor: "#f0f0f0" }}>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Min</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Max</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>PPTR</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Allowance 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input 
+              type="number" 
+              name="qdMin"
+              value={qbData?.qdMin || ""}
+              onChange={(e) => setQbData((prev) => ({ ...prev, qdMin: e.target.value }))}
+              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+            />
+          </td>
+          <td>
+            <input 
+              type="number" 
+              name="qdMax"
+              value={qbData?.qdMax || ""}
+              onChange={(e) => setQbData((prev) => ({ ...prev, qdMax: e.target.value }))}
+              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+            />
+          </td>
+          <td>
+            <input 
+              type="number" 
+              name="pptr"
+              value={qbData?.pptr || ""}
+              onChange={(e) => setQbData((prev) => ({ ...prev, pptr: e.target.value }))}
+              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+            />
+          </td>
+          <td>
+            <input 
+              type="number" 
+              name="allowance5"
+              value={qbData?.allowance5 || ""}
+              onChange={(e) => setQbData((prev) => ({ ...prev, allowance5: e.target.value }))}
+              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 )}
       {/* Promoted PTR, AB Allowance %, and AB Allowance on the Same Line */}
 <div className="form-section three-cols no-overlap"
