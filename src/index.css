@@ -151,3 +151,7 @@ button[type="submit"] {
     padding-bottom: 20px;
     border-bottom: 2px solid #ccc;
 }
+input:disabled {
+    background-color: #e0e0e0 !important;
+    cursor: not-allowed;
+  }

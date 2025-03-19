@@ -1,29 +1,42 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
-  
 
-    
-    const [formData, setFormData] = useState({
-    family: '', brands: '', package: '', 
-    region: '', state: '', wholesaler: '', 
+  const [formData, setFormData] = useState({
+    family: '', brands: '', package: '',
+    region: '', state: '', wholesaler: '',
     chainParent: '', chain: '',
     startDate: today, endDate: defaultEndDate,
     promotedPTR: '', abPercentage: '', abAllowance: '',
     qdDiscount: false, TusCheck: false
   });
 
+  // ✅ Corrected handleChange function
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-};
 
+    setFormData(prev => {
+      let updatedData = { 
+        ...prev, 
+        [name]: type === 'checkbox' ? checked : value 
+      };
+
+      // If QD Discount is checked, clear the amount fields
+      if (name === "qdDiscount" && checked) {
+        updatedData = { 
+          ...updatedData, 
+          promotedPTR: "", 
+          abPercentage: "", 
+          abAllowance: "" 
+        };
+      }
+
+      return updatedData;
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,11 +48,18 @@ export default function TwoPageFormApp() {
       family: '', brands: '', package: '',
       region: '', state: '', wholesaler: '',
       chainParent: '', chain: '',
-      startDate: '', endDate: '',
+      startDate: today, endDate: defaultEndDate,
       promotedPTR: '', abPercentage: '', abAllowance: '',
       qdDiscount: false, TusCheck: false
     });
   };
+
+  return (
+    <div>
+      {/* Your JSX goes here */}
+    </div>
+  );
+};
 
   if (page === 'requestSandbox') {
     return (
@@ -245,36 +265,45 @@ export default function TwoPageFormApp() {
 </div>
 </div>
 
-    
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '15px', alignself:'start'}}>
-      <h3 style={{ textAlign: 'center' }}>Calculations</h3>
-      <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-      <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-      <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
-      <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-      <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+<div className="form-section three-cols no-overlap"
+     style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
+  
+  <div className="input-group" style={{ flex: '2' }}>
+    <label>Promoted PTR:</label>
+    <input type="number" name="promotedPTR" 
+           value={formData.promotedPTR} 
+           onChange={handleChange}
+           disabled={formData.qdDiscount} 
+           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc', 
+                    backgroundColor: formData.qdDiscount ? '#e0e0e0' : 'white' }} />
+  </div>
 
-      
-      <div className="qd-checkbox" style={{ marginTop: '20px' }}>
-        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
-          <input 
-            type="checkbox" 
-            name="qdDiscount" 
-            checked={formData.qdDiscount || false} 
-            onChange={handleChange} 
-            style={{ marginRight: '20px', width: '18px', height: '18px', cursor: 'pointer' }} 
-          />
-          QD Discount
-        </label>
-      </div>
-    </div>
+  <div className="input-group" style={{ flex: '2' }}>
+    <label>AB Allowance %:</label>
+    <input type="number" name="abPercentage" 
+           value={formData.abPercentage} 
+           onChange={handleChange}
+           disabled={formData.qdDiscount} 
+           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc', 
+                    backgroundColor: formData.qdDiscount ? '#e0e0e0' : 'white' }} />
+  </div>
 
+  <div className="input-group" style={{ flex: '2' }}>
+    <label>AB Allowance:</label>
+    <input type="number" name="abAllowance" 
+           value={formData.abAllowance} 
+           onChange={handleChange}
+           disabled={formData.qdDiscount} 
+           style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc', 
+                    backgroundColor: formData.qdDiscount ? '#e0e0e0' : 'white' }} />
+  </div>
+</div>
   </div>
 
   {/* Submit Button */}
   <button type="submit">Submit</button>
 </form>
         </div>
-      )}
+      );
   <div>
 </div>    
