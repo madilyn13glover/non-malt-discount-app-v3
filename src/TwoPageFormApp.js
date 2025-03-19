@@ -6,7 +6,7 @@ export default function TwoPageFormApp() {
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
   
 
-    
+    const [qbData, setQbData] = useState(null); // Store QB values
     const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
@@ -24,21 +24,38 @@ export default function TwoPageFormApp() {
         ...prev, 
         [name]: type === "checkbox" ? checked : value 
       };
-  
-      // If QD Discount is checked, clear and disable amount fields
-      if (name === "qdDiscount" && checked) {
-        updatedData = {
-          ...updatedData,
-          promotedPTR: "", 
-          abPercentage: "", 
-          abAllowance: ""
-        };
-      }
-  
-      return updatedData;
-    });
-  };
+  // ✅ If QD Discount is checked, apply static QB values & grey out fields
+  if (name === "qdDiscount" && checked) {
+    const qbValues = { 
+      promotedPTR: "5.00", 
+      abPercentage: "10%", 
+      abAllowance: "2.50" 
+    }; // Static QB values
 
+    setQbData(qbValues); // Store QB values for table display
+
+    updatedData = {
+      ...updatedData,
+      promotedPTR: qbValues.promotedPTR, 
+      abPercentage: qbValues.abPercentage, 
+      abAllowance: qbValues.abAllowance
+    };
+  } 
+  // ✅ If unchecked, clear QB data & enable fields
+  else {
+    setQbData(null);
+    updatedData = {
+      ...updatedData,
+      promotedPTR: "", 
+      abPercentage: "", 
+      abAllowance: ""
+    };
+  }
+
+  return updatedData;
+});
+};
+      
   const handleSubmit = (e) => {
     e.preventDefault();
     setPage('confirmation');
@@ -236,6 +253,25 @@ export default function TwoPageFormApp() {
     <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
   </div>
 </div>
+{/* QD Table - Appears Only When QD Discount is Checked */}
+{formData.qdDiscount && qbData && (
+  <table border="1" style={{ width: "100%", marginTop: "20px", borderCollapse: "collapse" }}>
+    <thead>
+      <tr style={{ backgroundColor: "#f0f0f0" }}>
+        <th style={{ padding: "10px", border: "1px solid #ccc" }}>Promoted PTR</th>
+        <th style={{ padding: "10px", border: "1px solid #ccc" }}>AB Allowance %</th>
+        <th style={{ padding: "10px", border: "1px solid #ccc" }}>AB Allowance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style={{ padding: "10px", border: "1px solid #ccc" }}>{qbData.promotedPTR}</td>
+        <td style={{ padding: "10px", border: "1px solid #ccc" }}>{qbData.abPercentage}</td>
+        <td style={{ padding: "10px", border: "1px solid #ccc" }}>{qbData.abAllowance}</td>
+      </tr>
+    </tbody>
+  </table>
+)}
       {/* Promoted PTR, AB Allowance %, and AB Allowance on the Same Line */}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
