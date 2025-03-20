@@ -45,7 +45,11 @@ export default function TwoPageFormApp() {
       return updatedData;
     });
   };
-
+  const handleQDChange = (index, field, value) => {
+    setQbData((prev) =>
+      prev.map((row, i) => (i === index ? { ...row, [field]: value } : row))
+    );
+  };
   // ✅ Handle form submission (does not navigate away)
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -362,7 +366,7 @@ export default function TwoPageFormApp() {
                 name="qdMin"
                 value={row.qdMin}
                 onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "90%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -371,7 +375,7 @@ export default function TwoPageFormApp() {
                 name="qdMax"
                 value={row.qdMax}
                 onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "90%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -380,7 +384,7 @@ export default function TwoPageFormApp() {
                 name="pptr"
                 value={row.pptr}
                 onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
-                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "90%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -389,7 +393,7 @@ export default function TwoPageFormApp() {
                 name="allowance"
                 value={row.allowance}
                 onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "90%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
