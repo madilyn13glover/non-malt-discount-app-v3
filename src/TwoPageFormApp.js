@@ -331,27 +331,30 @@ export default function TwoPageFormApp() {
       <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
       <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
 
-{/* QD Table (Appears Only If QD is Checked) */}
-{formData.qdDiscount && qbData.length > 0 && (
-  <div style={{ marginTop: "20px", overflowX: "auto", maxWidth: "100%" }}>
+      
+      <div className="qd-checkbox" style={{ marginTop: '20px' }}>
+        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
+          <input 
+            type="checkbox" 
+            name="qdDiscount" 
+            checked={formData.qdDiscount || false} 
+            onChange={handleChange} 
+            style={{ marginRight: '20px', width: '18px', height: '18px', cursor: 'pointer' }} 
+          />
+          QD Discount
+        </label>
+      </div>
+      {formData.qdDiscount && (
+  <div style={{ marginTop: "20px" }}>
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
-    <table 
-      border="1" 
-      style={{ 
-        width: "100%", 
-        borderCollapse: "collapse", 
-        tableLayout: "fixed",  // ✅ Prevents table from expanding
-        maxWidth: "800px", // ✅ Keeps it from getting too wide
-        margin: "auto" // ✅ Centers table in the container
-      }}
-    >
+    <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
       <thead>
         <tr style={{ backgroundColor: "#f0f0f0" }}>
-          <th style={{ width: "22%" }}>QD Min</th>
-          <th style={{ width: "22%" }}>QD Max</th>
-          <th style={{ width: "22%" }}>PPTR</th>
-          <th style={{ width: "22%" }}>Allowance</th>
-          <th style={{ width: "12%" }}>Action</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Min</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Max</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>PPTR</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Allowance</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -363,13 +366,7 @@ export default function TwoPageFormApp() {
                 name="qdMin"
                 value={row.qdMin}
                 onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                style={{ 
-                  width: "100%", 
-                  padding: "6px", 
-                  borderRadius: "3px", 
-                  border: "1px solid #ccc",
-                  boxSizing: "border-box" // ✅ Prevents extra padding affecting size
-                }}
+                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -378,13 +375,7 @@ export default function TwoPageFormApp() {
                 name="qdMax"
                 value={row.qdMax}
                 onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                style={{ 
-                  width: "100%", 
-                  padding: "6px", 
-                  borderRadius: "3px", 
-                  border: "1px solid #ccc",
-                  boxSizing: "border-box" 
-                }}
+                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -393,13 +384,7 @@ export default function TwoPageFormApp() {
                 name="pptr"
                 value={row.pptr}
                 onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
-                style={{ 
-                  width: "100%", 
-                  padding: "6px", 
-                  borderRadius: "3px", 
-                  border: "1px solid #ccc",
-                  boxSizing: "border-box" 
-                }}
+                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -408,65 +393,35 @@ export default function TwoPageFormApp() {
                 name="allowance"
                 value={row.allowance}
                 onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                style={{ 
-                  width: "100%", 
-                  padding: "6px", 
-                  borderRadius: "3px", 
-                  border: "1px solid #ccc",
-                  boxSizing: "border-box" 
-                }}
+                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
-              <button 
-                type="button" 
-                onClick={() => removeQDRow(index)} 
-                style={{ 
-                  padding: "6px 10px", 
-                  cursor: "pointer",
-                  width: "100%",
-                  boxSizing: "border-box"
-                }}
-              >
-                X
-              </button>
+              <button onClick={() => removeQDRow(index)} style={{ padding: "5px 10px", cursor: "pointer" }}>X</button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
-
-    {/* Add Row Button */}
-    <button 
-      type="button" 
-      onClick={addQDRow} 
-      style={{ 
-        marginTop: "10px", 
-        padding: "8px 15px", 
-        cursor: "pointer",
-        width: "100%",
-        maxWidth: "200px" 
-      }}
-    >
-      Add Row
-    </button>
-
-    {/* Mix and Match Checkbox (Only Appears If QD is Checked) */}
-    <div style={{ marginTop: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
-        <input 
-          type="checkbox" 
-          name="mixAndMatch" 
-          checked={formData.mixAndMatch || false} 
-          onChange={handleChange} 
-          style={{ marginRight: "10px", width: "18px", height: "18px", cursor: "pointer" }} 
-        />
-        Mix and Match
-      </label>
-    </div>
+    {/* 🔹 Fix: Add Row Button */}
+    <button type="button" onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>
+  Add Row
+</button>
+{/* Mix and Match Checkbox (Only Appears If QD is Checked) */}
+<div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
+  <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
+    <input 
+      type="checkbox" 
+      name="mixAndMatch" 
+      checked={formData.mixAndMatch || false} 
+      onChange={handleChange} 
+      style={{ marginRight: "10px", width: "18px", height: "18px", cursor: "pointer" }} 
+    />
+    Mix and Match
+  </label>
+</div>
   </div>
 )}
-    
 </div>
 </div>
   {/* Submit Button */}
