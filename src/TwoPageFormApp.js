@@ -305,7 +305,30 @@ export default function TwoPageFormApp() {
     />
   </div>
 </div>
-{/* QD Table Appears Below Calculations */}
+</div>
+
+    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '15px', alignself:'start'}}>
+      <h3 style={{ textAlign: 'center' }}>Calculations</h3>
+      <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+      <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+      <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
+      <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
+      <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+
+      
+      <div className="qd-checkbox" style={{ marginTop: '20px' }}>
+        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
+          <input 
+            type="checkbox" 
+            name="qdDiscount" 
+            checked={formData.qdDiscount || false} 
+            onChange={handleChange} 
+            style={{ marginRight: '20px', width: '18px', height: '18px', cursor: 'pointer' }} 
+          />
+          QD Discount
+        </label>
+      </div>
+    {/* QD Table Appears Below Calculations */}
 {formData.qdDiscount && (
   <div style={{ marginTop: "20px" }}>
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
@@ -362,32 +385,7 @@ export default function TwoPageFormApp() {
   </div>
 )}
 </div>
-
-    
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '15px', alignself:'start'}}>
-      <h3 style={{ textAlign: 'center' }}>Calculations</h3>
-      <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-      <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-      <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
-      <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-      <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
-
-      
-      <div className="qd-checkbox" style={{ marginTop: '20px' }}>
-        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
-          <input 
-            type="checkbox" 
-            name="qdDiscount" 
-            checked={formData.qdDiscount || false} 
-            onChange={handleChange} 
-            style={{ marginRight: '20px', width: '18px', height: '18px', cursor: 'pointer' }} 
-          />
-          QD Discount
-        </label>
-      </div>
-    </div>
-
-  </div>
+</div>
 
   {/* Submit Button */}
   <button type="submit">Submit</button>
