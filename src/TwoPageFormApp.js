@@ -60,8 +60,8 @@ export default function TwoPageFormApp() {
   
   const removeQDRow = (index) => {
     setQbData((prev) => prev.filter((_, i) => i !== index));
-  }; 
-      
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setPage('confirmation');
@@ -395,7 +395,9 @@ export default function TwoPageFormApp() {
       </tbody>
     </table>
     {/* 🔹 Fix: Add Row Button */}
-    <button onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>Add Row</button>
+    <button type="button" onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>
+  Add Row
+</button>
   </div>
 )}
 </div>
