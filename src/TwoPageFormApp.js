@@ -4,12 +4,10 @@ export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
-  
 
-  const [qbData, setQbData] = useState([
-    { qdMin: "", qdMax: "", pptr: "", allowance: "" }  // Default first row
-  ]); // Store QB values
-    const [formData, setFormData] = useState({
+  const [qbData, setQbData] = useState([]); // Store QB values
+
+  const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
     chainParent: '', chain: '',
@@ -18,75 +16,71 @@ export default function TwoPageFormApp() {
     qdDiscount: false, TusCheck: false
   });
 
+  // ✅ Handle changes for all inputs and checkboxes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-  
+
     setFormData((prev) => {
       let updatedData = { 
         ...prev, 
         [name]: type === "checkbox" ? checked : value 
       };
-  
+
       // ✅ If QD Discount is checked, disable fields & show QD table
-      if (name === "qdDiscount" && checked) {
-        updatedData = {
-          ...updatedData,
-          promotedPTR: "",  // Example static value (replace if needed)
-          abPercentage: "",
-          abAllowance: ""
-        };
-        
-        setQbData([
-          { qdMin: "", qdMax: "", pptr: "", allowance: "" } // Default first row
-        ]);
-      } 
-      // ✅ If unchecked, enable fields & hide QD table
-      else {
-        updatedData = {
-          ...updatedData,
-          promotedPTR: "", 
-          abPercentage: "", 
-          abAllowance: ""
-        };
-        setQbData(null); // Hide QD table
+      if (name === "qdDiscount") {
+        if (checked) {
+          updatedData = {
+            ...updatedData,
+            promotedPTR: "",  
+            abPercentage: "",
+            abAllowance: ""
+          };
+          
+          setQbData((prevQb) => prevQb.length === 0 ? [{ qdMin: "", qdMax: "", pptr: "", allowance: "" }] : prevQb);
+        } else {
+          setQbData([]); // Hide QD table when unchecked
+        }
       }
-  
+
       return updatedData;
     });
-    const handleSubmit = (e) => {
-      e.preventDefault();
-    
-      // Convert mixAndMatch from boolean to "Yes" or "No"
-      const submittedData = {
-        ...formData,
-        mixAndMatch: formData.mixAndMatch ? "Yes" : "No"
-      };
-    
-      console.log("Form Submitted:", submittedData); // ✅ Data is saved, but no page change
-    };
-  };
-  const addQDRow = () => {
-    setQbData((prev) => [...prev, { qdMin: "", qdMax: "", pptr: "", allowance: "" }]);
-  };
-  
-  const removeQDRow = (index) => {
-    setQbData((prev) => prev.filter((_, i) => i !== index));
-  };
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setPage('confirmation');
   };
 
+  // ✅ Handle form submission (does not navigate away)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Convert mixAndMatch from boolean to "Yes" or "No"
+    const submittedData = {
+      ...formData,
+      mixAndMatch: formData.mixAndMatch ? "Yes" : "No"
+    };
+
+    console.log("Form Submitted:", submittedData);
+  };
+
+  // ✅ Prevent adding rows when QD Discount is unchecked
+  const addQDRow = () => {
+    if (!formData.qdDiscount) return;
+    setQbData((prev) => [...prev, { qdMin: "", qdMax: "", pptr: "", allowance: "" }]);
+  };
+
+  // ✅ Prevent removing last row
+  const removeQDRow = (index) => {
+    setQbData((prev) => prev.length > 1 ? prev.filter((_, i) => i !== index) : prev);
+  };
+
+  // ✅ Handle form reset
   const handleReset = () => {
     setFormData({
       family: '', brands: '', package: '',
       region: '', state: '', wholesaler: '',
       chainParent: '', chain: '',
-      startDate: '', endDate: '',
+      startDate: today, endDate: defaultEndDate,
       promotedPTR: '', abPercentage: '', abAllowance: '',
       qdDiscount: false, TusCheck: false
     });
+    setQbData([]); // Clear QD table on reset
   };
 
   if (page === 'requestSandbox') {
