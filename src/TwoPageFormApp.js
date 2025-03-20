@@ -358,60 +358,99 @@ export default function TwoPageFormApp() {
         </tr>
       </thead>
       <tbody>
-        {qbData.map((row, index) => (
-          <tr key={index}>
-            <td>
-              <input 
-                type="number" 
-                name="qdMin"
-                value={row.qdMin}
-                onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                style={{ width: "60%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-              />
-            </td>
-            <td>
-              <input 
-                type="number" 
-                name="qdMax"
-                value={row.qdMax}
-                onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                style={{ width: "70%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-              />
-            </td>
-            <td>
-              <input 
-                type="number" 
-                name="pptr"
-                value={row.pptr}
-                onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
-                style={{ width: "75%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-              />
-            </td>
-            <td>
-              <input 
-                type="number" 
-                name="allowance"
-                value={row.allowance}
-                onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                style={{ width: "80%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-              />
-            </td>
-            <td style={{ textAlign: "center", verticalAlign: "middle" }}>
-  <button 
-    onClick={() => removeQDRow(index)} 
-    style={{ 
-      padding: "5px 10px", 
-      cursor: "pointer", 
-      display: "block", 
-      margin: "auto"
-    }}
-  >
-    X
-  </button>
-</td>
-          </tr>
-        ))}
-      </tbody>
+  {qbData.map((row, index) => (
+    <tr key={index}>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
+        <input 
+          type="number" 
+          name="qdMin"
+          value={row.qdMin}
+          onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
+          style={{ 
+            width: "100%", 
+            minWidth: "50px",  /* ✅ Prevents inputs from shrinking too much */
+            maxWidth: "150px", /* ✅ Prevents inputs from getting too big */
+            padding: "8px", 
+            borderRadius: "5px", 
+            border: "1px solid #ccc",
+            textAlign: "center",
+            boxSizing: "border-box"
+          }}
+        />
+      </td>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
+        <input 
+          type="number" 
+          name="qdMax"
+          value={row.qdMax}
+          onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
+          style={{ 
+            width: "100%", 
+            minWidth: "50px",  
+            maxWidth: "150px", 
+            padding: "8px", 
+            borderRadius: "5px", 
+            border: "1px solid #ccc",
+            textAlign: "center",
+            boxSizing: "border-box"
+          }}
+        />
+      </td>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
+        <input 
+          type="number" 
+          name="pptr"
+          value={row.pptr}
+          onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
+          style={{ 
+            width: "100%", 
+            minWidth: "50px",  
+            maxWidth: "150px", 
+            padding: "8px", 
+            borderRadius: "5px", 
+            border: "1px solid #ccc",
+            textAlign: "center",
+            boxSizing: "border-box"
+          }}
+        />
+      </td>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
+        <input 
+          type="number" 
+          name="allowance"
+          value={row.allowance}
+          onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
+          style={{ 
+            width: "100%", 
+            minWidth: "50px",  
+            maxWidth: "150px", 
+            padding: "8px", 
+            borderRadius: "5px", 
+            border: "1px solid #ccc",
+            textAlign: "center",
+            boxSizing: "border-box"
+          }}
+        />
+      </td>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
+        <button 
+          onClick={() => removeQDRow(index)} 
+          style={{ 
+            padding: "6px 10px", 
+            cursor: "pointer", 
+            display: "block",
+            margin: "auto",
+            border: "1px solid #ccc",
+            backgroundColor: "#f0f0f0",
+            borderRadius: "5px"
+          }}
+        >
+          X
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody> 
     </table>
     {/* 🔹 Fix: Add Row Button */}
     <button type="button" onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>
