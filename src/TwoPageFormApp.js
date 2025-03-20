@@ -6,7 +6,9 @@ export default function TwoPageFormApp() {
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
   
 
-    const [qbData, setQbData] = useState(null); // Store QB values
+  const [qbData, setQbData] = useState([
+    { qdMin: "", qdMax: "", pptr: "", allowance: "" }  // Default first row
+  ]); // Store QB values
     const [formData, setFormData] = useState({
     family: '', brands: '', package: '', 
     region: '', state: '', wholesaler: '', 
@@ -33,12 +35,10 @@ export default function TwoPageFormApp() {
           abPercentage: "",
           abAllowance: ""
         };
-        setQbData({  // Set QD Table values (empty so user can edit)
-          qdMin: "",
-          qdMax: "",
-          pptr: "",
-          allowance: ""
-        });
+        
+        setQbData([
+          { qdMin: "", qdMax: "", pptr: "", allowance: "" } // Default first row
+        ]);
       } 
       // ✅ If unchecked, enable fields & hide QD table
       else {
@@ -54,6 +54,13 @@ export default function TwoPageFormApp() {
       return updatedData;
     });
   };
+  const addQDRow = () => {
+    setQbData((prev) => [...prev, { qdMin: "", qdMax: "", pptr: "", allowance: "" }]);
+  };
+  
+  const removeQDRow = (index) => {
+    setQbData((prev) => prev.filter((_, i) => i !== index));
+  }; 
       
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -328,8 +335,7 @@ export default function TwoPageFormApp() {
           QD Discount
         </label>
       </div>
-    {/* QD Table Appears Below Calculations */}
-{formData.qdDiscount && (
+      {formData.qdDiscount && (
   <div style={{ marginTop: "20px" }}>
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
     <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -338,55 +344,62 @@ export default function TwoPageFormApp() {
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Min</th>
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Max</th>
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>PPTR</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Allowance 5</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Allowance</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <input 
-              type="number" 
-              name="qdMin"
-              value={qbData?.qdMin || ""}
-              onChange={(e) => setQbData((prev) => ({ ...prev, qdMin: e.target.value }))}
-              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-            />
-          </td>
-          <td>
-            <input 
-              type="number" 
-              name="qdMax"
-              value={qbData?.qdMax || ""}
-              onChange={(e) => setQbData((prev) => ({ ...prev, qdMax: e.target.value }))}
-              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-            />
-          </td>
-          <td>
-            <input 
-              type="number" 
-              name="pptr"
-              value={qbData?.pptr || ""}
-              onChange={(e) => setQbData((prev) => ({ ...prev, pptr: e.target.value }))}
-              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-            />
-          </td>
-          <td>
-            <input 
-              type="number" 
-              name="allowance5"
-              value={qbData?.allowance5 || ""}
-              onChange={(e) => setQbData((prev) => ({ ...prev, allowance5: e.target.value }))}
-              style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
-            />
-          </td>
-        </tr>
+        {qbData.map((row, index) => (
+          <tr key={index}>
+            <td>
+              <input 
+                type="number" 
+                name="qdMin"
+                value={row.qdMin}
+                onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
+                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+              />
+            </td>
+            <td>
+              <input 
+                type="number" 
+                name="qdMax"
+                value={row.qdMax}
+                onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
+                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+              />
+            </td>
+            <td>
+              <input 
+                type="number" 
+                name="pptr"
+                value={row.pptr}
+                onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
+                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+              />
+            </td>
+            <td>
+              <input 
+                type="number" 
+                name="allowance"
+                value={row.allowance}
+                onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
+                style={{ width: "100%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+              />
+            </td>
+            <td>
+              <button onClick={() => removeQDRow(index)} style={{ padding: "5px 10px", cursor: "pointer" }}>Remove</button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
+    {/* 🔹 Fix: Add Row Button */}
+    <button onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>Add Row</button>
   </div>
 )}
 </div>
 </div>
-
   {/* Submit Button */}
   <button type="submit">Submit</button>
 </form>
