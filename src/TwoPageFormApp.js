@@ -36,7 +36,7 @@ export default function TwoPageFormApp() {
             abAllowance: ""
           };
           
-          setQbData((prevQb) => prevQb.length === 0 ? [{ qdMin: "", qdMax: "", pptr: "", allowance: "" }] : prevQb);
+          setQbData((prevQb) => prevQb.length === 0 ? [{ qdMin: "", qdMax: "", discount: "", allowance: "",absplit: "" }] : prevQb);
         } else {
           setQbData([]); // Hide QD table when unchecked
         }
@@ -66,7 +66,7 @@ export default function TwoPageFormApp() {
   // ✅ Prevent adding rows when QD Discount is unchecked
   const addQDRow = () => {
     if (!formData.qdDiscount) return;
-    setQbData((prev) => [...prev, { qdMin: "", qdMax: "", pptr: "", allowance: "" }]);
+    setQbData((prev) => [...prev, { qdMin: "", qdMax: "", discount: "", allowance: "",absplit: "" }]);
   };
 
   // ✅ Prevent removing last row
@@ -347,7 +347,12 @@ export default function TwoPageFormApp() {
       {formData.qdDiscount && (
   <div style={{ marginTop: "20px" }}>
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
-    <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
+    <table border="1" style={{ 
+      width: "100%", 
+      minWidth: "900px",  /* ✅ Makes the table bigger */
+      borderCollapse: "collapse",
+      fontSize: "18px"  /* ✅ Increases text size */
+    }}>
       <thead>
         <tr style={{ backgroundColor: "#f0f0f0" }}>
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>Min</th>
@@ -401,7 +406,7 @@ export default function TwoPageFormApp() {
               <input 
                 type="number" 
                 name="discount"
-                value={row.discount || ""}   // ✅ NEW FIELD
+                value={row.discount} 
                 onChange={(e) => handleQDChange(index, "discount", e.target.value)}
                 style={{ 
                   width: "100%", 
@@ -418,9 +423,9 @@ export default function TwoPageFormApp() {
       <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
         <input 
           type="number" 
-          name="pptr"
-          value={row.pptr}
-          onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
+          name="allowance"
+          value={row.allowance}
+          onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
           style={{ 
             width: "100%", 
             minWidth: "50px",  
@@ -436,9 +441,9 @@ export default function TwoPageFormApp() {
       <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
         <input 
           type="number" 
-          name="allowance"
-          value={row.allowance}
-          onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
+          name="Absplit"
+          value={row.absplit}
+          onChange={(e) => handleQDChange(index, "Absplit%", e.target.value)}
           style={{ 
             width: "100%", 
             minWidth: "50px",  
