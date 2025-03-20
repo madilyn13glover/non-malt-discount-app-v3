@@ -305,8 +305,9 @@ export default function TwoPageFormApp() {
     />
   </div>
 </div>
+
+
     
-<div style={{ display: "flex", gap: "30px", justifyContent: "center", alignItems: "flex-start", marginTop: "20px" }}>
     <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '15px', alignself:'start'}}>
       <h3 style={{ textAlign: 'center' }}>Calculations</h3>
       <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
@@ -329,7 +330,7 @@ export default function TwoPageFormApp() {
         </label>
       </div>
     </div>
-    {/* QD Table Appears Below Calculations */}
+{/* QD Table Appears Below Calculations */}
 {formData.qdDiscount && (
   <div style={{ marginTop: "20px" }}>
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
@@ -386,8 +387,6 @@ export default function TwoPageFormApp() {
   </div>
 )}
 </div>
-</div>
-
   </div>
 
   {/* Submit Button */}
