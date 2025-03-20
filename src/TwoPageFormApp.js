@@ -366,7 +366,7 @@ export default function TwoPageFormApp() {
                 name="qdMin"
                 value={row.qdMin}
                 onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "60%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -375,7 +375,7 @@ export default function TwoPageFormApp() {
                 name="qdMax"
                 value={row.qdMax}
                 onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "70%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -384,7 +384,7 @@ export default function TwoPageFormApp() {
                 name="pptr"
                 value={row.pptr}
                 onChange={(e) => handleQDChange(index, "pptr", e.target.value)}
-                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "75%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
             <td>
@@ -393,12 +393,22 @@ export default function TwoPageFormApp() {
                 name="allowance"
                 value={row.allowance}
                 onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                style={{ width: "50%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+                style={{ width: "80%", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
               />
             </td>
-            <td>
-              <button onClick={() => removeQDRow(index)} style={{ padding: "5px 10px", cursor: "pointer" }}>X</button>
-            </td>
+            <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+  <button 
+    onClick={() => removeQDRow(index)} 
+    style={{ 
+      padding: "5px 10px", 
+      cursor: "pointer", 
+      display: "block", 
+      margin: "auto"
+    }}
+  >
+    X
+  </button>
+</td>
           </tr>
         ))}
       </tbody>
