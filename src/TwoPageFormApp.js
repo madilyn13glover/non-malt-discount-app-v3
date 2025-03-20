@@ -53,6 +53,17 @@ export default function TwoPageFormApp() {
   
       return updatedData;
     });
+    const handleSubmit = (e) => {
+      e.preventDefault();
+    
+      // Convert mixAndMatch from boolean to "Yes" or "No"
+      const submittedData = {
+        ...formData,
+        mixAndMatch: formData.mixAndMatch ? "Yes" : "No"
+      };
+    
+      console.log("Form Submitted:", submittedData); // ✅ Data is saved, but no page change
+    };
   };
   const addQDRow = () => {
     setQbData((prev) => [...prev, { qdMin: "", qdMax: "", pptr: "", allowance: "" }]);
@@ -398,6 +409,19 @@ export default function TwoPageFormApp() {
     <button type="button" onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>
   Add Row
 </button>
+{/* Mix and Match Checkbox (Only Appears If QD is Checked) */}
+<div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
+  <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
+    <input 
+      type="checkbox" 
+      name="mixAndMatch" 
+      checked={formData.mixAndMatch || false} 
+      onChange={handleChange} 
+      style={{ marginRight: "10px", width: "18px", height: "18px", cursor: "pointer" }} 
+    />
+    Mix and Match
+  </label>
+</div>
   </div>
 )}
 </div>
