@@ -345,7 +345,7 @@ export default function TwoPageFormApp() {
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>QD Max</th>
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>PPTR</th>
           <th style={{ padding: "10px", border: "1px solid #ccc" }}>Allowance</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Actions</th>
+          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Action</th>
         </tr>
       </thead>
       <tbody>
