@@ -345,7 +345,13 @@ export default function TwoPageFormApp() {
         </label>
       </div>
       {formData.qdDiscount && (
-  <div style={{ marginTop: "20px" }}>
+  <div style={{ 
+    width: "100%", 
+    padding: "15px 10px", 
+    backgroundColor: "#f9f9f9", 
+    border: "1px solid #ddd", 
+    borderRadius: "8px"
+    }}>
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
     <table border="1" style={{ 
       width: "100%", 
