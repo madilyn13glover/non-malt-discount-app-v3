@@ -1,5 +1,4 @@
-import { useState } from 'react'
-
+import { useState } from 'react';
 
 export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
@@ -16,18 +15,22 @@ export default function TwoPageFormApp() {
     qdDiscount: false, TusCheck: false, mixAndMatch: false
   });
 
-  // ✅ Reusable styles
   const headerCell = {
     padding: '8px',
     border: '1px solid #ccc',
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    backgroundColor: '#f0f0f0',
+    position: 'sticky',
+    top: 0,
+    zIndex: 2
   };
 
   const cell = {
     padding: '6px',
     border: '1px solid #ccc',
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: '#fff'
   };
 
   const inputStyle = {
@@ -39,7 +42,6 @@ export default function TwoPageFormApp() {
     textAlign: 'center'
   };
 
-  // ✅ Handle form field changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => {
@@ -60,7 +62,6 @@ export default function TwoPageFormApp() {
     });
   };
 
-  // ✅ Handle QD table input changes
   const handleQDChange = (index, field, value) => {
     setQbData((prev) =>
       prev.map((row, i) => (i === index ? { ...row, [field]: value } : row))
@@ -78,13 +79,11 @@ export default function TwoPageFormApp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const submitted = {
       ...formData,
       mixAndMatch: formData.mixAndMatch ? 'Yes' : 'No',
       qbData: formData.qdDiscount ? qbData : undefined
     };
-
     console.log('Form submitted:', submitted);
   };
 
@@ -360,17 +359,12 @@ export default function TwoPageFormApp() {
 
   {/* QD Table & Mix and Match */}
   {formData.qdDiscount && (
-          <>
-            <h3 style={{ textAlign: "center", marginTop: "20px", marginBottom: "10px" }}>QD Details</h3>
+          <div style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "15px", marginTop: "20px", maxWidth: "100%" }}>
+            <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
 
             <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-              <table style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                tableLayout: "fixed",
-                fontSize: "14px"
-              }}>
-                <thead style={{ position: "sticky", top: 0, backgroundColor: "#f0f0f0", zIndex: 1 }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed", fontSize: "14px" }}>
+                <thead>
                   <tr>
                     <th style={headerCell}>Min</th>
                     <th style={headerCell}>Max</th>
@@ -383,49 +377,12 @@ export default function TwoPageFormApp() {
                 <tbody>
                   {qbData.map((row, index) => (
                     <tr key={index}>
-                      <td style={cell}>
-                        <input
-                          type="number"
-                          value={row.qdMin}
-                          onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                          style={inputStyle}
-                        />
-                      </td>
-                      <td style={cell}>
-                        <input
-                          type="number"
-                          value={row.qdMax}
-                          onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                          style={inputStyle}
-                        />
-                      </td>
-                      <td style={cell}>
-                        <input
-                          type="number"
-                          value={row.discount}
-                          onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                          style={inputStyle}
-                        />
-                      </td>
-                      <td style={cell}>
-                        <input
-                          type="number"
-                          value={row.allowance}
-                          onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                          style={inputStyle}
-                        />
-                      </td>
-                      <td style={cell}>
-                        <input
-                          type="number"
-                          value={row.absplit}
-                          onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
-                          style={inputStyle}
-                        />
-                      </td>
-                      <td style={cell}>
-                        <button type="button" onClick={() => removeQDRow(index)}>X</button>
-                      </td>
+                      <td style={cell}><input type="number" value={row.qdMin} onChange={(e) => handleQDChange(index, "qdMin", e.target.value)} style={inputStyle} /></td>
+                      <td style={cell}><input type="number" value={row.qdMax} onChange={(e) => handleQDChange(index, "qdMax", e.target.value)} style={inputStyle} /></td>
+                      <td style={cell}><input type="number" value={row.discount} onChange={(e) => handleQDChange(index, "discount", e.target.value)} style={inputStyle} /></td>
+                      <td style={cell}><input type="number" value={row.allowance} onChange={(e) => handleQDChange(index, "allowance", e.target.value)} style={inputStyle} /></td>
+                      <td style={cell}><input type="number" value={row.absplit} onChange={(e) => handleQDChange(index, "absplit", e.target.value)} style={inputStyle} /></td>
+                      <td style={cell}><button type="button" onClick={() => removeQDRow(index)}>X</button></td>
                     </tr>
                   ))}
                 </tbody>
@@ -448,8 +405,8 @@ export default function TwoPageFormApp() {
                 Mix and Match
               </label>
             </div>
-          </>
-        )}  
+          </div>
+        )}
 </div>
 </div>
 </div>
