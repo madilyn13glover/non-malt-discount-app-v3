@@ -349,7 +349,7 @@ export default function TwoPageFormApp() {
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
     <table border="1" style={{ 
       width: "100%", 
-      minWidth: "900px",  /* ✅ Makes the table bigger */
+      minWidth: "700px",  /* ✅ Makes the table bigger */
       borderCollapse: "collapse",
       fontSize: "18px"  /* ✅ Increases text size */
     }}>
