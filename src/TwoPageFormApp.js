@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import QDTable from './QDTable'; // ✅ Make sure the path matches your file structure
 
 export default function TwoPageFormApp() {
   const [page, setPage] = useState('home');
@@ -98,6 +99,7 @@ export default function TwoPageFormApp() {
     });
     setQbData([]);
   };
+
 
   if (page === 'requestSandbox') {
     return (
