@@ -399,7 +399,7 @@ export default function TwoPageFormApp() {
               <th style={headerCell}>Max</th>
               <th style={headerCell}>Discount</th>
               <th style={headerCell}>Allowance</th>
-              <th style={headerCell}>AB Split</th>
+              <th style={headerCell}>AB Slit</th>
               <th style={headerCell}>Action</th>
             </tr>
           </thead>
