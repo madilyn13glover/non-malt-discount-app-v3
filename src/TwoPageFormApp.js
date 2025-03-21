@@ -37,7 +37,6 @@ export default function TwoPageFormApp() {
     width: '100%',
     padding: '6px',
     borderRadius: '4px',
-    border: '1px solid #ccc',
     boxSizing: 'border-box',
     textAlign: 'center'
   };
