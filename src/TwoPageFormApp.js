@@ -368,23 +368,26 @@ export default function TwoPageFormApp() {
 
   {/* QD Table & Mix and Match */}
   {formData.qdDiscount && (
-  <div style={{ marginTop: '20px' }}>
-    <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>QD Details</h3>
+  <div style={{ marginTop: "20px" }}>
+    <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
 
-    {/* Scrollable QD Table with sticky header */}
-    <div style={{
-      maxHeight: '220px',
-      overflowY: 'auto',
-      border: '1px solid #ccc',
-      borderRadius: '6px',
-      boxShadow: 'inset 0 0 4px rgba(0,0,0,0.1)'
-    }}>
-      <table style={{
-        width: '100%',
-        borderCollapse: 'collapse',
-        tableLayout: 'fixed',
-        fontSize: '14px'
-      }}>
+    {/* Fixed width box */}
+    <div
+      style={{
+        width: "650px",              // ✅ Fixed width to avoid stretching
+        border: "1px solid #ccc",
+        borderRadius: "6px",
+        overflow: "hidden"
+      }}
+    >
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          tableLayout: "fixed",
+          fontSize: "14px"
+        }}
+      >
         <thead>
           <tr>
             <th style={headerCell}>Min</th>
@@ -395,78 +398,84 @@ export default function TwoPageFormApp() {
             <th style={headerCell}>Action</th>
           </tr>
         </thead>
-        <tbody>
-          {qbData.map((row, index) => (
-            <tr key={index}>
-              <td style={cell}>
-                <input
-                  type="number"
-                  value={row.qdMin}
-                  onChange={(e) => handleQDChange(index, 'qdMin', e.target.value)}
-                  style={inputStyle}
-                />
-              </td>
-              <td style={cell}>
-                <input
-                  type="number"
-                  value={row.qdMax}
-                  onChange={(e) => handleQDChange(index, 'qdMax', e.target.value)}
-                  style={inputStyle}
-                />
-              </td>
-              <td style={cell}>
-                <input
-                  type="number"
-                  value={row.discount}
-                  onChange={(e) => handleQDChange(index, 'discount', e.target.value)}
-                  style={inputStyle}
-                />
-              </td>
-              <td style={cell}>
-                <input
-                  type="number"
-                  value={row.allowance}
-                  onChange={(e) => handleQDChange(index, 'allowance', e.target.value)}
-                  style={inputStyle}
-                />
-              </td>
-              <td style={cell}>
-                <input
-                  type="number"
-                  value={row.absplit}
-                  onChange={(e) => handleQDChange(index, 'absplit', e.target.value)}
-                  style={inputStyle}
-                />
-              </td>
-              <td style={cell}>
-                <button
-                  type="button"
-                  onClick={() => removeQDRow(index)}
-                  style={{ padding: '4px 8px' }}
-                >
-                  X
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
       </table>
+
+      {/* Scrollable rows */}
+      <div style={{ maxHeight: "180px", overflowY: "auto" }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            tableLayout: "fixed"
+          }}
+        >
+          <tbody>
+            {qbData.map((row, index) => (
+              <tr key={index}>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.qdMin}
+                    onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.qdMax}
+                    onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.discount}
+                    onChange={(e) => handleQDChange(index, "discount", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.allowance}
+                    onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.absplit}
+                    onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <button type="button" onClick={() => removeQDRow(index)}>
+                    X
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    {/* Add Row Button */}
-    <button type="button" onClick={addQDRow} style={{ marginTop: '10px' }}>
+    <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
       Add Level
     </button>
 
-    {/* Mix and Match Checkbox */}
-    <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center' }}>
-      <label style={{ fontWeight: 'bold' }}>
+    <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
+      <label style={{ fontWeight: "bold" }}>
         <input
           type="checkbox"
           name="mixAndMatch"
           checked={formData.mixAndMatch || false}
           onChange={handleChange}
-          style={{ marginRight: '10px' }}
+          style={{ marginRight: "10px" }}
         />
         Mix and Match
       </label>
