@@ -333,7 +333,7 @@ export default function TwoPageFormApp() {
 
       
       <div className="qd-checkbox" style={{ marginTop: '20px' }}>
-        <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
+        <label style={{ display: 'flex', alignItems: 'center', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }}>
           <input 
             type="checkbox" 
             name="qdDiscount" 
@@ -446,7 +446,7 @@ export default function TwoPageFormApp() {
           }}
         />
       </td>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "70px" }}>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "60px" }}>
         <button 
           onClick={() => removeQDRow(index)} 
           style={{ 
