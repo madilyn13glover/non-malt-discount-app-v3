@@ -349,7 +349,7 @@ export default function TwoPageFormApp() {
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
     <table border="1" style={{ 
       width: "100%", 
-      minWidth: "700px",  /* ✅ Makes the table bigger */
+      minWidth: "650px",  /* ✅ Makes the table bigger */
       borderCollapse: "collapse",
       fontSize: "18px"  /* ✅ Increases text size */
     }}>
@@ -374,8 +374,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
           style={{ 
             width: "100%", 
-            minWidth: "50px",  /* ✅ Prevents inputs from shrinking too much */
-            maxWidth: "150px", /* ✅ Prevents inputs from getting too big */
+            width: "100px",
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -392,8 +391,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
           style={{ 
             width: "100%", 
-            minWidth: "50px",  
-            maxWidth: "150px", 
+            width: "100px",
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -410,8 +408,7 @@ export default function TwoPageFormApp() {
                 onChange={(e) => handleQDChange(index, "discount", e.target.value)}
                 style={{ 
                   width: "100%", 
-                  minWidth: "50px",  
-                  maxWidth: "150px", 
+                  width: "100px",
                   padding: "8px", 
                   borderRadius: "5px", 
                   border: "1px solid #ccc",
@@ -428,8 +425,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
           style={{ 
             width: "100%", 
-            minWidth: "50px",  
-            maxWidth: "150px", 
+            width: "100px", 
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -446,8 +442,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "Absplit%", e.target.value)}
           style={{ 
             width: "100%", 
-            minWidth: "50px",  
-            maxWidth: "150px", 
+            width: "100px", 
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
