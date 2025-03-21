@@ -36,9 +36,11 @@ export default function TwoPageFormApp() {
   const inputStyle = {
     width: '100%',
     padding: '6px',
+    border: 'none',            // ✅ Removes the visible border
     borderRadius: '4px',
     boxSizing: 'border-box',
-    textAlign: 'center'
+    textAlign: 'center',
+    outline: 'none'            // ✅ Removes blue highlight on focus
   };
 
   const handleChange = (e) => {
@@ -372,8 +374,8 @@ export default function TwoPageFormApp() {
           marginTop: "20px",
           width: "100%",
           maxWidth: "700px",
-          marginLeft: "auto",   // ✅ centers or moves it in
-          marginRight: "auto"   // ✅ centers or keeps it from hugging right
+          marginLeft: "10px",   // ✅ centers or moves it in
+          marginRight: "20px"   // ✅ centers or keeps it from hugging right
     }}
   >
     <div style={{ width: "720px" }}>
@@ -405,7 +407,7 @@ export default function TwoPageFormApp() {
                 <th style={headerCell}>Max</th>
                 <th style={headerCell}>Discount</th>
                 <th style={headerCell}>Allowance</th>
-                <th style={headerCell}>AB Splt</th>
+                <th style={headerCell}>AB Split</th>
                 <th style={headerCell}>Action</th>
               </tr>
             </thead>
