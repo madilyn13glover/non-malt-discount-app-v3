@@ -362,9 +362,14 @@ export default function TwoPageFormApp() {
   <>
     <h3 style={{ textAlign: "center", marginTop: "20px", marginBottom: "10px" }}>QD Details</h3>
 
-    <div style={{ maxHeight: "250px", overflowY: "auto" }}>
-      <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-        <thead>
+    <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+      <table style={{ 
+        width: "100%", 
+        borderCollapse: "collapse", 
+        tableLayout: "fixed", 
+        fontSize: "14px" 
+      }}>
+        <thead style={{ position: "sticky", top: 0, backgroundColor: "#f0f0f0", zIndex: 1 }}>
           <tr>
             <th style={headerCell}>Min</th>
             <th style={headerCell}>Max</th>
@@ -378,19 +383,44 @@ export default function TwoPageFormApp() {
           {qbData.map((row, index) => (
             <tr key={index}>
               <td style={cell}>
-                <input type="number" value={row.qdMin} onChange={(e) => handleQDChange(index, "qdMin", e.target.value)} style={inputStyle} />
+                <input
+                  type="number"
+                  value={row.qdMin}
+                  onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
+                  style={inputStyle}
+                />
               </td>
               <td style={cell}>
-                <input type="number" value={row.qdMax} onChange={(e) => handleQDChange(index, "qdMax", e.target.value)} style={inputStyle} />
+                <input
+                  type="number"
+                  value={row.qdMax}
+                  onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
+                  style={inputStyle}
+                />
               </td>
               <td style={cell}>
-                <input type="number" value={row.discount} onChange={(e) => handleQDChange(index, "discount", e.target.value)} style={inputStyle} />
+                <input
+                  type="number"
+                  value={row.discount}
+                  onChange={(e) => handleQDChange(index, "discount", e.target.value)}
+                  style={inputStyle}
+                />
               </td>
               <td style={cell}>
-                <input type="number" value={row.allowance} onChange={(e) => handleQDChange(index, "allowance", e.target.value)} style={inputStyle} />
+                <input
+                  type="number"
+                  value={row.allowance}
+                  onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
+                  style={inputStyle}
+                />
               </td>
               <td style={cell}>
-                <input type="number" value={row.absplit} onChange={(e) => handleQDChange(index, "absplit", e.target.value)} style={inputStyle} />
+                <input
+                  type="number"
+                  value={row.absplit}
+                  onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
+                  style={inputStyle}
+                />
               </td>
               <td style={cell}>
                 <button type="button" onClick={() => removeQDRow(index)}>X</button>
@@ -401,8 +431,9 @@ export default function TwoPageFormApp() {
       </table>
     </div>
 
-    {/* Add Row + Mix & Match */}
-    <button type="button" onClick={addQDRow} style={{ marginTop: '10px' }}>Add Level</button>
+    <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
+      Add Level
+    </button>
 
     <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
       <label style={{ fontWeight: "bold" }}>
