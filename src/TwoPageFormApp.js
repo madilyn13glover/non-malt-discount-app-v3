@@ -5,76 +5,88 @@ export default function TwoPageFormApp() {
   const today = new Date().toISOString().split('T')[0];
   const defaultEndDate = `${new Date().getFullYear()}-12-31`;
 
-  const [qbData, setQbData] = useState([]); // Store QB values
-
+  const [qbData, setQbData] = useState([]);
   const [formData, setFormData] = useState({
-    family: '', brands: '', package: '', 
-    region: '', state: '', wholesaler: '', 
+    family: '', brands: '', package: '',
+    region: '', state: '', wholesaler: '',
     chainParent: '', chain: '',
     startDate: today, endDate: defaultEndDate,
     promotedPTR: '', abPercentage: '', abAllowance: '',
-    qdDiscount: false, TusCheck: false
+    qdDiscount: false, TusCheck: false, mixAndMatch: false
   });
 
-  // ✅ Handle changes for all inputs and checkboxes
+  // ✅ Reusable styles
+  const headerCell = {
+    padding: '8px',
+    border: '1px solid #ccc',
+    textAlign: 'center',
+    fontWeight: 'bold'
+  };
+
+  const cell = {
+    padding: '6px',
+    border: '1px solid #ccc',
+    textAlign: 'center'
+  };
+
+  const inputStyle = {
+    width: '100%',
+    padding: '6px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    boxSizing: 'border-box',
+    textAlign: 'center'
+  };
+
+  // ✅ Handle form field changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     setFormData((prev) => {
-      let updatedData = { 
-        ...prev, 
-        [name]: type === "checkbox" ? checked : value 
-      };
+      let updated = { ...prev, [name]: type === 'checkbox' ? checked : value };
 
-      // ✅ If QD Discount is checked, disable fields & show QD table
-      if (name === "qdDiscount") {
+      if (name === 'qdDiscount') {
         if (checked) {
-          updatedData = {
-            ...updatedData,
-            promotedPTR: "",  
-            abPercentage: "",
-            abAllowance: ""
-          };
-          
-          setQbData((prevQb) => prevQb.length === 0 ? [{ qdMin: "", qdMax: "", discount: "", allowance: "",absplit: "" }] : prevQb);
+          updated.promotedPTR = '';
+          updated.abPercentage = '';
+          updated.abAllowance = '';
+          setQbData([{ qdMin: '1', qdMax: '9999', discount: '', allowance: '', absplit: '' }]);
         } else {
-          setQbData([]); // Hide QD table when unchecked
+          setQbData([]);
         }
       }
 
-      return updatedData;
+      return updated;
     });
   };
+
+  // ✅ Handle QD table input changes
   const handleQDChange = (index, field, value) => {
     setQbData((prev) =>
       prev.map((row, i) => (i === index ? { ...row, [field]: value } : row))
     );
   };
-  // ✅ Handle form submission (does not navigate away)
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    // Convert mixAndMatch from boolean to "Yes" or "No"
-    const submittedData = {
-      ...formData,
-      mixAndMatch: formData.mixAndMatch ? "Yes" : "No"
-    };
-
-    console.log("Form Submitted:", submittedData);
-  };
-
-  // ✅ Prevent adding rows when QD Discount is unchecked
   const addQDRow = () => {
-    if (!formData.qdDiscount) return;
-    setQbData((prev) => [...prev, { qdMin: "", qdMax: "", discount: "", allowance: "",absplit: "" }]);
+    if (!formData.qdDiscount || qbData.length >= 4) return;
+    setQbData((prev) => [...prev, { qdMin: '', qdMax: '', discount: '', allowance: '', absplit: '' }]);
   };
 
-  // ✅ Prevent removing last row
   const removeQDRow = (index) => {
     setQbData((prev) => prev.length > 1 ? prev.filter((_, i) => i !== index) : prev);
   };
 
-  // ✅ Handle form reset
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const submitted = {
+      ...formData,
+      mixAndMatch: formData.mixAndMatch ? 'Yes' : 'No',
+      qbData: formData.qdDiscount ? qbData : undefined
+    };
+
+    console.log('Form submitted:', submitted);
+  };
+
   const handleReset = () => {
     setFormData({
       family: '', brands: '', package: '',
@@ -82,9 +94,9 @@ export default function TwoPageFormApp() {
       chainParent: '', chain: '',
       startDate: today, endDate: defaultEndDate,
       promotedPTR: '', abPercentage: '', abAllowance: '',
-      qdDiscount: false, TusCheck: false
+      qdDiscount: false, TusCheck: false, mixAndMatch: false
     });
-    setQbData([]); // Clear QD table on reset
+    setQbData([]);
   };
 
   if (page === 'requestSandbox') {
@@ -332,159 +344,81 @@ export default function TwoPageFormApp() {
       <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
 
       
-      <div className="qd-checkbox" style={{ marginTop: '20px' }}>
-        <label style={{ display: 'flex', alignItems: 'center', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }}>
-          <input 
-            type="checkbox" 
-            name="qdDiscount" 
-            checked={formData.qdDiscount || false} 
-            onChange={handleChange} 
-            style={{ marginRight: '20px', width: '18px', height: '18px', cursor: 'pointer' }} 
-          />
-          QD Discount
-        </label>
-      </div>
-      {formData.qdDiscount && (
-  <div style={{ marginTop: "20px" }}>
-    <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
-    <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
-      <thead>
-        <tr style={{ backgroundColor: "#f0f0f0" }}>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Min</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Max</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Discount</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Allowance</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>AB Split %</th>
-          <th style={{ padding: "10px", border: "1px solid #ccc" }}>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-  {qbData.map((row, index) => (
-    <tr key={index}>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
-        <input 
-          type="number" 
-          name="qdMin"
-          value={row.qdMin}
-          onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-          style={{ 
-            width: "100%", 
-            width: "70px",
-            padding: "8px", 
-            borderRadius: "5px", 
-            border: "1px solid #ccc",
-            textAlign: "center",
-            boxSizing: "border-box"
-          }}
-        />
-      </td>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
-        <input 
-          type="number" 
-          name="qdMax"
-          value={row.qdMax}
-          onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-          style={{ 
-            width: "100%", 
-            width: "70px",
-            padding: "8px", 
-            borderRadius: "5px", 
-            border: "1px solid #ccc",
-            textAlign: "center",
-            boxSizing: "border-box"
-          }}
-        />
-        </td>
-            <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
-              <input 
-                type="number" 
-                name="discount"
-                value={row.discount} 
-                onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                style={{ 
-                  width: "100%", 
-                  width: "80px",
-                  padding: "8px", 
-                  borderRadius: "5px", 
-                  border: "1px solid #ccc",
-                  textAlign: "center",
-                  boxSizing: "border-box"
-                }}
-              />
-      </td>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
-        <input 
-          type="number" 
-          name="allowance"
-          value={row.allowance}
-          onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-          style={{ 
-            width: "100%", 
-            width: "80px", 
-            padding: "8px", 
-            borderRadius: "5px", 
-            border: "1px solid #ccc",
-            textAlign: "center",
-            boxSizing: "border-box"
-          }}
-        />
-      </td>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
-        <input 
-          type="number" 
-          name="Absplit"
-          value={row.absplit}
-          onChange={(e) => handleQDChange(index, "Absplit%", e.target.value)}
-          style={{ 
-            width: "100%", 
-            width: "80px", 
-            padding: "8px", 
-            borderRadius: "5px", 
-            border: "1px solid #ccc",
-            textAlign: "center",
-            boxSizing: "border-box"
-          }}
-        />
-      </td>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "60px" }}>
-        <button 
-          onClick={() => removeQDRow(index)} 
-          style={{ 
-            padding: "6px 10px", 
-            cursor: "pointer", 
-            display: "block",
-            margin: "auto",
-            border: "1px solid #ccc",
-            backgroundColor: "#f0f0f0",
-            borderRadius: "5px"
-          }}
-        >
-          X
-        </button>
-      </td>
-    </tr>
-  ))}
-</tbody> 
-    </table>
-    {/* 🔹 Fix: Add Row Button */}
-    <button type="button" onClick={addQDRow} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>
-  Add Level
-</button>
-{/* Mix and Match Checkbox (Only Appears If QD is Checked) */}
-<div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
-  <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
+      <div style={{ marginTop: '20px' }}>
+  {/* QD Checkbox */}
+  <label style={{ display: 'flex', alignItems: 'center', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }}>
     <input 
       type="checkbox" 
-      name="mixAndMatch" 
-      checked={formData.mixAndMatch || false} 
+      name="qdDiscount" 
+      checked={formData.qdDiscount || false} 
       onChange={handleChange} 
-      style={{ marginRight: "10px", width: "18px", height: "18px", cursor: "pointer" }} 
+      style={{ marginRight: '10px', width: '18px', height: '18px', cursor: 'pointer' }} 
     />
-    Mix and Match
+    QD Discount
   </label>
-</div>
-  </div>
+
+  {/* QD Table & Mix and Match */}
+  {formData.qdDiscount && (
+  <>
+    <h3 style={{ textAlign: "center", marginTop: "20px", marginBottom: "10px" }}>QD Details</h3>
+
+    <div style={{ maxHeight: "250px", overflowY: "auto" }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+        <thead>
+          <tr>
+            <th style={headerCell}>Min</th>
+            <th style={headerCell}>Max</th>
+            <th style={headerCell}>Discount</th>
+            <th style={headerCell}>Allowance</th>
+            <th style={headerCell}>AB Split</th>
+            <th style={headerCell}>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {qbData.map((row, index) => (
+            <tr key={index}>
+              <td style={cell}>
+                <input type="number" value={row.qdMin} onChange={(e) => handleQDChange(index, "qdMin", e.target.value)} style={inputStyle} />
+              </td>
+              <td style={cell}>
+                <input type="number" value={row.qdMax} onChange={(e) => handleQDChange(index, "qdMax", e.target.value)} style={inputStyle} />
+              </td>
+              <td style={cell}>
+                <input type="number" value={row.discount} onChange={(e) => handleQDChange(index, "discount", e.target.value)} style={inputStyle} />
+              </td>
+              <td style={cell}>
+                <input type="number" value={row.allowance} onChange={(e) => handleQDChange(index, "allowance", e.target.value)} style={inputStyle} />
+              </td>
+              <td style={cell}>
+                <input type="number" value={row.absplit} onChange={(e) => handleQDChange(index, "absplit", e.target.value)} style={inputStyle} />
+              </td>
+              <td style={cell}>
+                <button type="button" onClick={() => removeQDRow(index)}>X</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {/* Add Row + Mix & Match */}
+    <button type="button" onClick={addQDRow} style={{ marginTop: '10px' }}>Add Level</button>
+
+    <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
+      <label style={{ fontWeight: "bold" }}>
+        <input
+          type="checkbox"
+          name="mixAndMatch"
+          checked={formData.mixAndMatch || false}
+          onChange={handleChange}
+          style={{ marginRight: "10px" }}
+        />
+        Mix and Match
+      </label>
+    </div>
+  </>
 )}
+</div>
 </div>
 </div>
   {/* Submit Button */}
