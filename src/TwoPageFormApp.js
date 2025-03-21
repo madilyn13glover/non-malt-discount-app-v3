@@ -335,15 +335,24 @@ export default function TwoPageFormApp() {
 </div>
 </div>
 
-    <div className="calculations" style={{ backgroundColor: 'white', color: 'black', padding: '30px', borderRadius: '15px', alignself:'start'}}>
-      <h3 style={{ textAlign: 'center' }}>Calculations</h3>
-      <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-      <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-      <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
-      <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-      <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
-
-      
+<div
+  className="calculations"
+  style={{
+    backgroundColor: 'white',
+    color: 'black',
+    padding: '20px',
+    borderRadius: '15px',
+    marginBottom: '20px',
+    alignSelf: 'start'
+  }}
+>
+  <h3 style={{ textAlign: 'center', marginTop: 0 }}>Calculations</h3>
+  <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+  <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
+  <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
+  <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
+  <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+    
       <div style={{ marginTop: '20px' }}>
   {/* QD Checkbox */}
   <label style={{ display: 'flex', alignItems: 'center', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }}>
@@ -370,9 +379,10 @@ export default function TwoPageFormApp() {
                     <th style={headerCell}>Discount</th>
                     <th style={headerCell}>Allowance</th>
                     <th style={headerCell}>AB Split</th>
-                    <th style={headerCell}>Acton</th>
+                    <th style={headerCell}>Action</th>
                   </tr>
                 </thead>
+                
                 <tbody>
                   {qbData.map((row, index) => (
                     <tr key={index}>
