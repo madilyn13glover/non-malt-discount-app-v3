@@ -374,7 +374,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
           style={{ 
             width: "100%", 
-            width: "100px",
+            width: "80px",
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -391,7 +391,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
           style={{ 
             width: "100%", 
-            width: "100px",
+            width: "80px",
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -408,7 +408,7 @@ export default function TwoPageFormApp() {
                 onChange={(e) => handleQDChange(index, "discount", e.target.value)}
                 style={{ 
                   width: "100%", 
-                  width: "100px",
+                  width: "80px",
                   padding: "8px", 
                   borderRadius: "5px", 
                   border: "1px solid #ccc",
@@ -425,7 +425,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
           style={{ 
             width: "100%", 
-            width: "100px", 
+            width: "80px", 
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -442,7 +442,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "Absplit%", e.target.value)}
           style={{ 
             width: "100%", 
-            width: "100px", 
+            width: "80px", 
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -451,7 +451,7 @@ export default function TwoPageFormApp() {
           }}
         />
       </td>
-      <td style={{ textAlign: "center", verticalAlign: "middle", width: "auto" }}>
+      <td style={{ textAlign: "center", verticalAlign: "middle", width: "70px" }}>
         <button 
           onClick={() => removeQDRow(index)} 
           style={{ 
