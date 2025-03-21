@@ -359,10 +359,9 @@ export default function TwoPageFormApp() {
 
   {/* QD Table & Mix and Match */}
   {formData.qdDiscount && (
-          <div style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "15px", marginTop: "20px", maxWidth: "100%" }}>
+          <div style={{ marginTop: '20px' }}>
             <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
-
-            <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+            <div style={{ maxHeight: "220px", overflowY: "auto", border: "1px solid #ccc", borderRadius: "6px" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed", fontSize: "14px" }}>
                 <thead>
                   <tr>
@@ -371,7 +370,7 @@ export default function TwoPageFormApp() {
                     <th style={headerCell}>Discount</th>
                     <th style={headerCell}>Allowance</th>
                     <th style={headerCell}>AB Split</th>
-                    <th style={headerCell}>Action</th>
+                    <th style={headerCell}>Acton</th>
                   </tr>
                 </thead>
                 <tbody>
