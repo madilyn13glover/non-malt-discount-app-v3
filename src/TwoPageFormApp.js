@@ -373,29 +373,36 @@ export default function TwoPageFormApp() {
 
     <div
       style={{
-        width: "540px", // ✅ Much narrower
         border: "1px solid #ccc",
         borderRadius: "6px",
-        overflow: "hidden"
+        overflow: "hidden",
+        maxWidth: "720px",       // ✅ fixed max width
+        width: "100%",
       }}
     >
-      {/* Header */}
-      <table style={{ width: "100%", tableLayout: "fixed", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={{ ...headerCell, width: "60px" }}>Min</th>
-            <th style={{ ...headerCell, width: "60px" }}>Max</th>
-            <th style={{ ...headerCell, width: "90px" }}>Discount</th>
-            <th style={{ ...headerCell, width: "90px" }}>Allowance</th>
-            <th style={{ ...headerCell, width: "90px" }}>AB Split</th>
-            <th style={{ ...headerCell, width: "50px" }}>X</th>
-          </tr>
-        </thead>
-      </table>
-
-      {/* Scrollable Body */}
-      <div style={{ maxHeight: "180px", overflowY: "auto" }}>
-        <table style={{ width: "100%", tableLayout: "fixed", borderCollapse: "collapse" }}>
+      <div
+        style={{
+          maxHeight: "200px",     // ✅ scrolls only inside the row container
+          overflowY: "auto",
+        }}
+      >
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            tableLayout: "fixed",
+          }}
+        >
+          <thead>
+            <tr>
+              <th style={headerCell}>Min</th>
+              <th style={headerCell}>Max</th>
+              <th style={headerCell}>Discount</th>
+              <th style={headerCell}>Allowance</th>
+              <th style={headerCell}>AB Split</th>
+              <th style={headerCell}>Action</th>
+            </tr>
+          </thead>
           <tbody>
             {qbData.map((row, index) => (
               <tr key={index}>
@@ -404,7 +411,7 @@ export default function TwoPageFormApp() {
                     type="number"
                     value={row.qdMin}
                     onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                    style={{ ...inputStyle, maxWidth: "55px" }}
+                    style={inputStyle}
                   />
                 </td>
                 <td style={cell}>
@@ -412,7 +419,7 @@ export default function TwoPageFormApp() {
                     type="number"
                     value={row.qdMax}
                     onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                    style={{ ...inputStyle, maxWidth: "55px" }}
+                    style={inputStyle}
                   />
                 </td>
                 <td style={cell}>
@@ -420,7 +427,7 @@ export default function TwoPageFormApp() {
                     type="number"
                     value={row.discount}
                     onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                    style={{ ...inputStyle, maxWidth: "80px" }}
+                    style={inputStyle}
                   />
                 </td>
                 <td style={cell}>
@@ -428,7 +435,7 @@ export default function TwoPageFormApp() {
                     type="number"
                     value={row.allowance}
                     onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                    style={{ ...inputStyle, maxWidth: "80px" }}
+                    style={inputStyle}
                   />
                 </td>
                 <td style={cell}>
@@ -436,14 +443,14 @@ export default function TwoPageFormApp() {
                     type="number"
                     value={row.absplit}
                     onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
-                    style={{ ...inputStyle, maxWidth: "80px" }}
+                    style={inputStyle}
                   />
                 </td>
                 <td style={cell}>
                   <button
                     type="button"
                     onClick={() => removeQDRow(index)}
-                    style={{ padding: "2px 6px", fontSize: "14px" }}
+                    style={{ padding: "4px 8px" }}
                   >
                     X
                   </button>
