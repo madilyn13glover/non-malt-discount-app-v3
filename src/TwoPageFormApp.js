@@ -369,7 +369,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
           style={{ 
             width: "100%", 
-            width: "80px",
+            width: "70px",
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
@@ -386,7 +386,7 @@ export default function TwoPageFormApp() {
           onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
           style={{ 
             width: "100%", 
-            width: "80px",
+            width: "70px",
             padding: "8px", 
             borderRadius: "5px", 
             border: "1px solid #ccc",
