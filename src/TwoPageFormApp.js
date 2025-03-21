@@ -369,9 +369,11 @@ export default function TwoPageFormApp() {
   {formData.qdDiscount && (
   <div
     style={{
-      display: "flex",
-      justifyContent: "flex-end", // aligns QD box to the right
-      marginTop: "20px",
+          marginTop: "20px",
+          width: "100%",
+          maxWidth: "700px",
+          marginLeft: "auto",   // ✅ centers or moves it in
+          marginRight: "auto"   // ✅ centers or keeps it from hugging right
     }}
   >
     <div style={{ width: "720px" }}>
