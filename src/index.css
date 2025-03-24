@@ -27,15 +27,18 @@ body {
 }
 
 .containersubmit {
-width: 100%;
-max-width: 1300px; /* Adjusted for better form fitting */
-padding: 20px;
-background-color: white;
-border-radius: 15px;
-box-shadow: 5px 5px 15px rgba(31, 30, 30, 0.1);
-overflow: hidden;
-min-height: 96vh
-}
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(31, 30, 30, 0.1);
+    overflow: hidden;
+    min-height: 90vh;
+    border: 4px solid black;
+    box-sizing: border-box;
+  }
 
 /* Title */
 .title {
