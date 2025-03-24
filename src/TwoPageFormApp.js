@@ -128,7 +128,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'home') {
     return (
-      <div className="home-screen">
+      <div className="containerhomescreen">
         <h1 className="title2">NON-MALT DISCOUNT REQUEST APP</h1>
         <div className="button-container" style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '15px' }}>
           <button onClick={() => setPage('requestSandbox')}>See Submitted Requests</button>
@@ -149,7 +149,7 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="form-container" >
+    <div className="containersubmit" >
       <h1 className="title">NON-MALT DISCOUNT REQUEST</h1>
 <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <button onClick={() => setPage('home')} className="back-button">Back</button>
@@ -196,8 +196,6 @@ export default function TwoPageFormApp() {
   </div>
 </div>
 
-
-      {/* Chain Parent, Chain */}
   {/* Chain Parent & Chain on the Same Line */}
 <div className="form-section two-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
@@ -399,7 +397,7 @@ export default function TwoPageFormApp() {
           <thead>
             <tr>
             <th style={headerCell}>Min</th>
-          <th style={headerCell}>Mx</th>
+          <th style={headerCell}>Max</th>
           <th style={headerCell}>Discount</th>
           <th style={headerCell}>Allowance</th>
           <th style={headerCell}>AB Split</th>
