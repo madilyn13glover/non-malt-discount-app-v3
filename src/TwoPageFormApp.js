@@ -372,90 +372,116 @@ export default function TwoPageFormApp() {
   <div
     style={{
       marginTop: "20px",
-      maxWidth: "800px", // ⬅️ Slightly wider table
+      maxWidth: "760px",
       marginLeft: "20px"
     }}
   >
     <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
 
-    {/* Fixed box with scrollable rows */}
-    <div style={{
-      border: "1px solid #ccc",
-      borderRadius: "6px",
-      overflow: "hidden",
-      display: "flex",
-      flexDirection: "column",
-      height: "180px" // ⬅️ Tighter height
-    }}>
-      {/* Sticky table header */}
+    {/* Fixed height box with full-height rows */}
+    <div
+      style={{
+        border: "1px solid #ccc",
+        borderRadius: "6px",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        height: "200px"
+      }}
+    >
+      {/* Table Header */}
       <div style={{ flexShrink: 0 }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed", fontSize: "12px" }}>
-          <colgroup>
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "8%" }} />
-          </colgroup>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            tableLayout: "fixed"
+          }}
+        >
           <thead>
             <tr>
-            <th style={headerCell}>Min</th>
-          <th style={headerCell}>Max</th>
-          <th style={headerCell}>Discount</th>
-          <th style={headerCell}>Allowance</th>
-          <th style={headerCell}>AB Split</th>
-          <th style={{ ...headerCell, width: "70px" }}>Action</th>
+              <th style={headerCell}>Min</th>
+              <th style={headerCell}>Max</th>
+              <th style={headerCell}>Discount</th>
+              <th style={headerCell}>Allowance</th>
+              <th style={headerCell}>AB Split</th>
+              <th style={{ ...headerCell, width: "60px" }}>Action</th>
             </tr>
           </thead>
-          <tbody>
+        </table>
+      </div>
+
+      {/* Rows that fill remaining height */}
+      <div style={{ flex: 1 }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            tableLayout: "fixed",
+            height: "100%"
+          }}
+        >
+          <tbody style={{ display: "block", height: "100%" }}>
             {qbData.map((row, index) => (
-              <tr key={index}>
-                <td style={{ ...cell, padding: "4px" }}>
+              <tr
+                key={index}
+                style={{
+                  display: "table",
+                  width: "100%",
+                  tableLayout: "fixed",
+                  height: `${200 / 4}px` // 4 rows = evenly fill 200px
+                }}
+              >
+                <td style={cell}>
                   <input
                     type="number"
                     value={row.qdMin}
                     onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px" }}
+                    style={{ ...inputStyle, fontSize: "12px", height: "100%" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px" }}>
+                <td style={cell}>
                   <input
                     type="number"
                     value={row.qdMax}
                     onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px" }}
+                    style={{ ...inputStyle, fontSize: "12px", height: "100%" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px" }}>
+                <td style={cell}>
                   <input
                     type="number"
                     value={row.discount}
                     onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px" }}
+                    style={{ ...inputStyle, fontSize: "12px", height: "100%" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px" }}>
+                <td style={cell}>
                   <input
                     type="number"
                     value={row.allowance}
                     onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px" }}
+                    style={{ ...inputStyle, fontSize: "12px", height: "100%" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px" }}>
+                <td style={cell}>
                   <input
                     type="number"
                     value={row.absplit}
                     onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px" }}
+                    style={{ ...inputStyle, fontSize: "12px", height: "100%" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px" }}>
+                <td style={{ ...cell, width: "60px" }}>
                   <button
                     type="button"
                     onClick={() => removeQDRow(index)}
-                    style={{ padding: "2px 6px", fontSize: "12px" }}
+                    style={{
+                      padding: "4px 6px",
+                      fontSize: "12px",
+                      height: "100%",
+                      width: "100%"
+                    }}
                   >
                     X
                   </button>
@@ -472,13 +498,26 @@ export default function TwoPageFormApp() {
     </button>
 
     <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
-      <label style={{ display: "flex", alignItems: "center", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}>
+      <label
+        style={{
+          display: "flex",
+          alignItems: "center",
+          fontSize: "16px",
+          fontWeight: "bold",
+          cursor: "pointer"
+        }}
+      >
         <input
           type="checkbox"
           name="mixAndMatch"
           checked={formData.mixAndMatch || false}
           onChange={handleChange}
-          style={{ marginRight: "8px", width: "16px", height: "16px", cursor: "pointer" }}
+          style={{
+            marginRight: "8px",
+            width: "18px",
+            height: "18px",
+            cursor: "pointer"
+          }}
         />
         Mix and Match
       </label>
