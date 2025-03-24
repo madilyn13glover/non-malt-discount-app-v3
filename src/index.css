@@ -28,11 +28,10 @@ body {
 
 .form-container{
 width: 100%;
-max-width: 1300; /* Adjusted for better form fitting */
+max-width: 1300px; /* Adjusted for better form fitting */
 padding: 20px;
 background-color: white;
 border-radius: 15px;
-border: 4px solid black;
 box-shadow: 5px 5px 15px rgba(31, 30, 30, 0.1);
 overflow: hidden;
 min-height: 96vh
