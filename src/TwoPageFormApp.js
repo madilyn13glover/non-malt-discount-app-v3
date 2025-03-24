@@ -102,7 +102,7 @@ export default function TwoPageFormApp() {
 
   if (page === 'requestSandbox') {
     return (
-      <div className="container">
+      <div className="containersubmit">
         <h2 className="title">Submitted Requests</h2>
         <div className="gallery">
           <div className="request-card">
@@ -342,7 +342,7 @@ export default function TwoPageFormApp() {
   <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
   <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
   <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-  <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
+  <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(2)}</p>
     
       <div style={{ marginTop: '10px' }}>
   {/* QD Checkbox */}
@@ -389,7 +389,7 @@ export default function TwoPageFormApp() {
           <thead>
             <tr>
             <th style={headerCell}>Min</th>
-          <th style={headerCell}>Mx</th>
+          <th style={headerCell}>Max</th>
           <th style={headerCell}>Discount</th>
           <th style={headerCell}>Allowance</th>
           <th style={headerCell}>AB Split</th>
@@ -454,23 +454,21 @@ export default function TwoPageFormApp() {
         </table>
       </div>
     </div>
-    <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
-      Add Level
-    </button>
+    <button type="button" onClick={addQDRow}>
+    Add Level
+  </button>
 
-    <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
-      <label style={{ display: "flex", alignItems: "center", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}>
-        <input
-          type="checkbox"
-          name="mixAndMatch"
-          checked={formData.mixAndMatch || false}
-          onChange={handleChange}
-          style={{ marginRight: "8px", width: "16px", height: "16px", cursor: "pointer" }}
-        />
-        Mix and Match
-      </label>
-    </div>
-  </div>
+  <label style={{ display: "flex", alignItems: "center", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}>
+    <input
+      type="checkbox"
+      name="mixAndMatch"
+      checked={formData.mixAndMatch || false}
+      onChange={handleChange}
+      style={{ marginRight: "8px", width: "16px", height: "16px", cursor: "pointer" }}
+    />
+    Mix and Match
+  </label>
+</div>
 )}
 </div>
 </div>
