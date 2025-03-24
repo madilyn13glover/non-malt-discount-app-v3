@@ -150,7 +150,7 @@ export default function TwoPageFormApp() {
 
   return (
     <div className="form-container" style={{ maxWidth: '1300px', margin: '0 auto', border: 'none', padding: '20px' }}>
-      <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
+      <h1 className="title">NON-MALT DISCOUNT REQUEST</h1>
 <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <button onClick={() => setPage('home')} className="back-button">Back</button>
         <button onClick={handleReset} className="reset-button">Reset</button>
@@ -402,58 +402,58 @@ export default function TwoPageFormApp() {
           <th style={headerCell}>Max</th>
           <th style={headerCell}>Discount</th>
           <th style={headerCell}>Allowance</th>
-          <th style={headerCell}>AB Splt</th>
+          <th style={headerCell}>AB Split</th>
           <th style={headerCell}>Action</th>
             </tr>
           </thead>
           <tbody>
             {qbData.map((row, index) => (
               <tr key={index}>
-                <td style={{ ...cell, padding: "4px", height: "27.20px"  }}>
+                <td style={{ ...cell, padding: "4px", height: "27.28px"  }}>
                   <input
                     type="number"
                     value={row.qdMin}
                     onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.20px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.28px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.20px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.28px" }}>
                   <input
                     type="number"
                     value={row.qdMax}
                     onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.20px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.28px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.20px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.28px" }}>
                   <input
                     type="number"
                     value={row.discount}
                     onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.20px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.28px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.20px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.28px" }}>
                   <input
                     type="number"
                     value={row.allowance}
                     onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.20px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.28px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.20px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.28px" }}>
                   <input
                     type="number"
                     value={row.absplit}
                     onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.20px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.28px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.20px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.28px" }}>
                   <button
                     type="button"
                     onClick={() => removeQDRow(index)}
-                    style={{ padding: "2px 6px", fontSize: "12px", height: "27.20px" }}
+                    style={{ padding: "2px 6px", fontSize: "12px", height: "27.28px" }}
                   >
                     X
                   </button>
