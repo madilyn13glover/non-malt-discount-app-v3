@@ -381,7 +381,7 @@ export default function TwoPageFormApp() {
       overflow: "hidden",
       display: "flex",
       flexDirection: "column",
-      height: "185px" 
+      height: "178px" 
     }}>
       {/* Sticky table header */}
       <div style={{ flexShrink: 0 }}>
