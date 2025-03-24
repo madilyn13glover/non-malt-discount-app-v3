@@ -401,7 +401,7 @@ export default function TwoPageFormApp() {
           <thead>
             <tr>
             <th style={headerCell}>Min</th>
-          <th style={headerCell}>Mx</th>
+          <th style={headerCell}>Max</th>
           <th style={headerCell}>Discount</th>
           <th style={headerCell}>Allowance</th>
           <th style={headerCell}>AB Split</th>
@@ -411,51 +411,51 @@ export default function TwoPageFormApp() {
           <tbody>
             {qbData.map((row, index) => (
               <tr key={index}>
-                <td style={{ ...cell, padding: "4px", height: "27.1px"  }}>
+                <td style={{ ...cell, padding: "4px", height: "27.11px"  }}>
                   <input
                     type="number"
                     value={row.qdMin}
                     onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.1px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.11px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.1px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.11px" }}>
                   <input
                     type="number"
                     value={row.qdMax}
                     onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.1px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.11px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.1px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.11px" }}>
                   <input
                     type="number"
                     value={row.discount}
                     onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.1px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.11px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.1px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.11px" }}>
                   <input
                     type="number"
                     value={row.allowance}
                     onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.1px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.11px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.1px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.11px" }}>
                   <input
                     type="number"
                     value={row.absplit}
                     onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
-                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.1px" }}
+                    style={{ ...inputStyle, fontSize: "12px", padding: "4px", height: "27.11px" }}
                   />
                 </td>
-                <td style={{ ...cell, padding: "4px", height: "27.1px" }}>
+                <td style={{ ...cell, padding: "4px", height: "27.11px" }}>
                   <button
                     type="button"
                     onClick={() => removeQDRow(index)}
-                    style={{ padding: "2px 6px", fontSize: "12px", height: "27.1px" }}
+                    style={{ padding: "2px 6px", fontSize: "12px", height: "27.11px" }}
                   >
                     X
                   </button>
