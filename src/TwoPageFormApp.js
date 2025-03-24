@@ -390,7 +390,7 @@ export default function TwoPageFormApp() {
       >
         <div
           style={{
-            maxHeight: "200px",
+            maxHeight: "100px",
             overflowY: "auto",
           }}
         >
@@ -475,14 +475,14 @@ export default function TwoPageFormApp() {
       </button>
 
       <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
-        <label style={{ fontWeight: "bold" }}>
+      <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
           <input
             type="checkbox"
             name="mixAndMatch"
             checked={formData.mixAndMatch || false}
             onChange={handleChange}
-            style={{ marginRight: "10px" }}
-          />
+            style={{ marginRight: "8px", width: "18px", height: "18px", cursor: "pointer" }}
+            />
           Mix and Match
         </label>
       </div>
