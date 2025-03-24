@@ -372,7 +372,7 @@ export default function TwoPageFormApp() {
   <div
     style={{
       marginTop: "20px",
-      maxWidth: "720px",
+      maxWidth: "760px", // ✅ increased width
       marginLeft: "20px"
     }}
   >
@@ -390,14 +390,22 @@ export default function TwoPageFormApp() {
       {/* Sticky table header */}
       <div style={{ flexShrink: 0 }}>
         <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+          <colgroup>
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "8%" }} /> {/* ✅ Action column narrower */}
+          </colgroup>
           <thead>
             <tr>
               <th style={headerCell}>Min</th>
-              <th style={headerCell}>Mx</th>
+              <th style={headerCell}>Max</th>
               <th style={headerCell}>Discount</th>
               <th style={headerCell}>Allowance</th>
-              <th style={headerCell}>AB Split</th>
-              <th style={{ ...headerCell, width: "70px" }}>Action</th>
+              <th style={headerCell}>B Split</th>
+              <th style={headerCell}>Action</th>
             </tr>
           </thead>
         </table>
@@ -406,6 +414,14 @@ export default function TwoPageFormApp() {
       {/* Scrollable row section */}
       <div style={{ overflowY: "auto", flex: 1 }}>
         <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+          <colgroup>
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "16%" }} />
+            <col style={{ width: "8%" }} />
+          </colgroup>
           <tbody>
             {qbData.map((row, index) => (
               <tr key={index}>
@@ -449,7 +465,7 @@ export default function TwoPageFormApp() {
                     style={inputStyle}
                   />
                 </td>
-                <td style={{ ...cell, width: "70px" }}>
+                <td style={cell}>
                   <button
                     type="button"
                     onClick={() => removeQDRow(index)}
