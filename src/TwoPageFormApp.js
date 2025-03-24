@@ -337,12 +337,27 @@ export default function TwoPageFormApp() {
 <div
   className="calculations"
 >
-<div className="calculation-boxes">
-  <div className="calculation-box">Reco FL PTR<br />${parseFloat(formData.promotedPTR || 0).toFixed(2)}</div>
-  <div className="calculation-box">PPTR<br />${parseFloat(formData.promotedPTR || 0).toFixed(2)}</div>
-  <div className="calculation-box">Discount<br />${parseFloat(formData.abPercentage || 0).toFixed(2)}</div>
-  <div className="calculation-box">Allowance %<br />{parseFloat(formData.abPercentage || 0).toFixed(1)}%</div>
-  <div className="calculation-box">Allowance $<br />${parseFloat(formData.abAllowance || 0).toFixed(2)}</div>
+<div className="calculation-cards">
+  <div className="calculation-card">
+    <div className="calculation-card-title">Reco FL PTR</div>
+    <div className="calculation-card-value">${parseFloat(formData.promotedPTR || 0).toFixed(2)}</div>
+  </div>
+  <div className="calculation-card">
+    <div className="calculation-card-title">PPTR</div>
+    <div className="calculation-card-value">${parseFloat(formData.promotedPTR || 0).toFixed(2)}</div>
+  </div>
+  <div className="calculation-card">
+    <div className="calculation-card-title">Discount</div>
+    <div className="calculation-card-value">${parseFloat(formData.abPercentage || 0).toFixed(2)}</div>
+  </div>
+  <div className="calculation-card">
+    <div className="calculation-card-title">Allowance %</div>
+    <div className="calculation-card-value">{parseFloat(formData.abPercentage || 0).toFixed(1)}%</div>
+  </div>
+  <div className="calculation-card">
+    <div className="calculation-card-title">Allowance $</div>
+    <div className="calculation-card-value">${parseFloat(formData.abAllowance || 0).toFixed(2)}</div>
+  </div>
 </div>
     
       <div style={{ marginTop: '10px' }}>
