@@ -339,10 +339,11 @@ export default function TwoPageFormApp() {
   style={{
     backgroundColor: 'white',
     color: 'black',
-    padding: '20px',
+    padding: '5px',
     borderRadius: '15px',
     marginBottom: '20px',
-    alignSelf: 'start'
+    alignSelf: 'start',
+    Margintop:'0px'
   }}
 >
   <h3 style={{ textAlign: 'center', marginTop: 0 }}>Calculations</h3>
