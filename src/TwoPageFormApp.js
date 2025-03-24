@@ -400,7 +400,7 @@ export default function TwoPageFormApp() {
           </colgroup>
           <thead>
             <tr>
-            <th style={headerCell}>Min</th>
+            <th style={headerCell}>Mn</th>
           <th style={headerCell}>Max</th>
           <th style={headerCell}>Discount</th>
           <th style={headerCell}>Allowance</th>
@@ -466,7 +466,6 @@ export default function TwoPageFormApp() {
         </table>
       </div>
     </div>
-
     <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
       Add Level
     </button>
