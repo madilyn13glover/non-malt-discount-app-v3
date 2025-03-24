@@ -400,7 +400,7 @@ export default function TwoPageFormApp() {
             <tr>
             <th style={headerCell}>Min</th>
           <th style={headerCell}>Max</th>
-          <th style={headerCell}>Dicount</th>
+          <th style={headerCell}>Discount</th>
           <th style={headerCell}>Allowance</th>
           <th style={headerCell}>AB Split</th>
           <th style={headerCell}>Action</th>
