@@ -282,7 +282,7 @@ export default function TwoPageFormApp() {
   </div>
 </div>
 
-      {/* Promoted PTR, AB Allowance %, and AB Allowance on the Same Line */}
+      {/* Promoted PTR, AB Allowance %, and AB Allowance*/}
 <div className="form-section three-cols no-overlap"
      style={{ display: 'flex', gap: '30px', justifyContent: 'space-between', marginBottom: '20px' }}>
 
@@ -354,9 +354,9 @@ export default function TwoPageFormApp() {
   <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
   <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(3)}</p>
     
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '10px' }}>
   {/* QD Checkbox */}
-  <label style={{ display: 'flex', alignItems: 'center', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }}>
+  <label style={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
     <input 
       type="checkbox" 
       name="qdDiscount" 
@@ -371,124 +371,118 @@ export default function TwoPageFormApp() {
   {formData.qdDiscount && (
   <div
     style={{
-          marginTop: "20px",
-          width: "100%",
-          maxWidth: "700px",
-          marginLeft: "10px",   // ✅ centers or moves it in
-          marginRight: "20px"   // ✅ centers or keeps it from hugging right
+      marginTop: "20px",
+      maxWidth: "720px",
+      marginLeft: "20px"
     }}
   >
-    <div style={{ width: "720px" }}>
-      <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
+    <h3 style={{ textAlign: "center", marginBottom: "10px" }}>QD Details</h3>
 
-      <div
-        style={{
-          border: "1px solid #ccc",
-          borderRadius: "6px",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            maxHeight: "100px",
-            overflowY: "auto",
-          }}
-        >
-          <table
-            style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              tableLayout: "fixed",
-            }}
-          >
-            <thead>
-              <tr>
-                <th style={headerCell}>Min</th>
-                <th style={headerCell}>Max</th>
-                <th style={headerCell}>Discount</th>
-                <th style={headerCell}>Allowance</th>
-                <th style={headerCell}>AB Split</th>
-                <th style={headerCell}>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {qbData.map((row, index) => (
-                <tr key={index}>
-                  <td style={cell}>
-                    <input
-                      type="number"
-                      value={row.qdMin}
-                      onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
-                      style={inputStyle}
-                    />
-                  </td>
-                  <td style={cell}>
-                    <input
-                      type="number"
-                      value={row.qdMax}
-                      onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
-                      style={inputStyle}
-                    />
-                  </td>
-                  <td style={cell}>
-                    <input
-                      type="number"
-                      value={row.discount}
-                      onChange={(e) => handleQDChange(index, "discount", e.target.value)}
-                      style={inputStyle}
-                    />
-                  </td>
-                  <td style={cell}>
-                    <input
-                      type="number"
-                      value={row.allowance}
-                      onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
-                      style={inputStyle}
-                    />
-                  </td>
-                  <td style={cell}>
-                    <input
-                      type="number"
-                      value={row.absplit}
-                      onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
-                      style={inputStyle}
-                    />
-                  </td>
-                  <td style={cell}>
-                    <button
-                      type="button"
-                      onClick={() => removeQDRow(index)}
-                      style={{ padding: "4px 8px" }}
-                    >
-                      X
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    {/* Fixed box with scrollable rows */}
+    <div style={{
+      border: "1px solid #ccc",
+      borderRadius: "6px",
+      overflow: "hidden",
+      display: "flex",
+      flexDirection: "column",
+      height: "200px"
+    }}>
+      {/* Sticky table header */}
+      <div style={{ flexShrink: 0 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+          <thead>
+            <tr>
+              <th style={headerCell}>Min</th>
+              <th style={headerCell}>Mx</th>
+              <th style={headerCell}>Discount</th>
+              <th style={headerCell}>Allowance</th>
+              <th style={headerCell}>AB Split</th>
+              <th style={{ ...headerCell, width: "70px" }}>Action</th>
+            </tr>
+          </thead>
+        </table>
       </div>
 
-      <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
-        Add Level
-      </button>
-
-      <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
-      <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
-          <input
-            type="checkbox"
-            name="mixAndMatch"
-            checked={formData.mixAndMatch || false}
-            onChange={handleChange}
-            style={{ marginRight: "8px", width: "18px", height: "18px", cursor: "pointer" }}
-            />
-          Mix and Match
-        </label>
+      {/* Scrollable row section */}
+      <div style={{ overflowY: "auto", flex: 1 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+          <tbody>
+            {qbData.map((row, index) => (
+              <tr key={index}>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.qdMin}
+                    onChange={(e) => handleQDChange(index, "qdMin", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.qdMax}
+                    onChange={(e) => handleQDChange(index, "qdMax", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.discount}
+                    onChange={(e) => handleQDChange(index, "discount", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.allowance}
+                    onChange={(e) => handleQDChange(index, "allowance", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={cell}>
+                  <input
+                    type="number"
+                    value={row.absplit}
+                    onChange={(e) => handleQDChange(index, "absplit", e.target.value)}
+                    style={inputStyle}
+                  />
+                </td>
+                <td style={{ ...cell, width: "70px" }}>
+                  <button
+                    type="button"
+                    onClick={() => removeQDRow(index)}
+                    style={{ padding: "4px 8px" }}
+                  >
+                    X
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
+
+    <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
+      Add Level
+    </button>
+
+    <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
+      <label style={{ display: "flex", alignItems: "center", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>
+        <input
+          type="checkbox"
+          name="mixAndMatch"
+          checked={formData.mixAndMatch || false}
+          onChange={handleChange}
+          style={{ marginRight: "8px", width: "18px", height: "18px", cursor: "pointer" }}
+        />
+        Mix and Match
+      </label>
+    </div>
   </div>
-)} 
+)}
 </div>
 </div>
 </div>
