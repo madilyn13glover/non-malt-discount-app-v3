@@ -135,18 +135,15 @@ button[type="submit"] {
 
 /* Calculations Section */
 .calculations {
-    margin-top: 10px;
-    font-size: 16px;
-    line-height: 1.6;
-}
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 15px;
+    margin-top: 0px; /* <== this is what you want */
+    margin-bottom: 20px;
+    align-self: start; /* Only needed if used in flex layout */
+  }
 
-.calculations p {
-    margin: 5px 0;
-}
-
-.calculations strong {
-    font-weight: bold;
-}
 
 /* Notes Section */
 .notes {

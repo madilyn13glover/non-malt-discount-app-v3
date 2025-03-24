@@ -336,15 +336,6 @@ export default function TwoPageFormApp() {
 
 <div
   className="calculations"
-  style={{
-    backgroundColor: 'white',
-    color: 'black',
-    padding: '5px',
-    borderRadius: '15px',
-    marginBottom: '20px',
-    alignSelf: 'start',
-    Margintop:'0px'
-  }}
 >
   <h3 style={{ textAlign: 'center', marginTop: 0 }}>Calculations</h3>
   <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
