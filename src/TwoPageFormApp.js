@@ -386,7 +386,7 @@ export default function TwoPageFormApp() {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        height: "200px"
+        height: "150px"
       }}
     >
       {/* Table Header */}
@@ -403,7 +403,7 @@ export default function TwoPageFormApp() {
               <th style={headerCell}>Min</th>
               <th style={headerCell}>Max</th>
               <th style={headerCell}>Discount</th>
-              <th style={headerCell}>Allowance</th>
+              <th style={headerCell}>Allwance</th>
               <th style={headerCell}>AB Split</th>
               <th style={{ ...headerCell, width: "60px" }}>Action</th>
             </tr>
