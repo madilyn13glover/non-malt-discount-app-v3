@@ -454,21 +454,22 @@ export default function TwoPageFormApp() {
         </table>
       </div>
     </div>
-    <button type="button" onClick={addQDRow}>
-    Add Level
-  </button>
+    <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
+      Add Level
+    </button>
 
-  <label style={{ display: "flex", alignItems: "center", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}>
-    <input
-      type="checkbox"
-      name="mixAndMatch"
-      checked={formData.mixAndMatch || false}
-      onChange={handleChange}
-      style={{ marginRight: "8px", width: "16px", height: "16px", cursor: "pointer" }}
-    />
-    Mix and Match
-  </label>
-</div>
+      <label style={{ display: "flex", alignItems: "center", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}>
+        <input
+          type="checkbox"
+          name="mixAndMatch"
+          checked={formData.mixAndMatch || false}
+          onChange={handleChange}
+          style={{ marginRight: "8px", width: "16px", height: "16px", cursor: "pointer" }}
+        />
+        Mix and Match
+      </label>
+    </div>
+ 
 )}
 </div>
 </div>
