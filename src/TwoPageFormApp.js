@@ -454,9 +454,14 @@ export default function TwoPageFormApp() {
         </table>
       </div>
     </div>
-    <button type="button" onClick={addQDRow} style={{ marginTop: "10px" }}>
-      Add Level
-    </button>
+    <div style={{ marginTop: "10px", display: "flex", alignItems: "center", gap: "20px" }}>
+  <button
+    type="button"
+    onClick={addQDRow}
+    style={{ padding: "6px 12px", fontSize: "14px" }}
+  >
+    Add Level
+  </button>
 
       <label style={{ display: "flex", alignItems: "center", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}>
         <input
@@ -469,7 +474,7 @@ export default function TwoPageFormApp() {
         Mix and Match
       </label>
     </div>
- 
+    </div>
 )}
 </div>
 </div>
