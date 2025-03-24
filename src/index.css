@@ -167,3 +167,23 @@ input:disabled {
     background-color: #e0e0e0 !important;
     cursor: not-allowed;
   }
+
+  .calculation-boxes {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .calculation-box {
+    background-color: #FFD700; /* Gold */
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    flex: 1;
+    min-width: 100px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  }
+  

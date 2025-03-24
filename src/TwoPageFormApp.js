@@ -337,12 +337,13 @@ export default function TwoPageFormApp() {
 <div
   className="calculations"
 >
-  <h3 style={{ textAlign: 'center', marginTop: 0 }}>Calculations</h3>
-  <p><strong>Reco FL PTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-  <p><strong>PPTR:</strong> ${parseFloat(formData.promotedPTR || 0).toFixed(2)}</p>
-  <p><strong>Discount:</strong> ${parseFloat(formData.abPercentage || 0).toFixed(2)}</p>
-  <p><strong>Allowance %:</strong> {parseFloat(formData.abPercentage || 0).toFixed(1)}%</p>
-  <p><strong>Allowance $:</strong> ${parseFloat(formData.abAllowance || 0).toFixed(2)}</p>
+<div className="calculation-boxes">
+  <div className="calculation-box">Reco FL PTR<br />${parseFloat(formData.promotedPTR || 0).toFixed(2)}</div>
+  <div className="calculation-box">PPTR<br />${parseFloat(formData.promotedPTR || 0).toFixed(2)}</div>
+  <div className="calculation-box">Discount<br />${parseFloat(formData.abPercentage || 0).toFixed(2)}</div>
+  <div className="calculation-box">Allowance %<br />{parseFloat(formData.abPercentage || 0).toFixed(1)}%</div>
+  <div className="calculation-box">Allowance $<br />${parseFloat(formData.abAllowance || 0).toFixed(2)}</div>
+</div>
     
       <div style={{ marginTop: '10px' }}>
   {/* QD Checkbox */}
