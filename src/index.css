@@ -34,6 +34,7 @@ body {
     text-transform: uppercase;
     padding-bottom: 15px;
     border-bottom: 2px solid #ccc;
+    padding-top: 10px;
 }
 
 /* Form Layout */

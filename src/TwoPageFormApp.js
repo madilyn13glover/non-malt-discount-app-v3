@@ -149,7 +149,7 @@ export default function TwoPageFormApp() {
   }
 
   return (
-    <div className="form-container" style={{ maxWidth: '1400px', margin: '0 auto', border: 'none', padding: '20px' }}>
+    <div className="form-container" style={{ maxWidth: '1000px', margin: '0 auto', border: 'none', padding: '20px' }}>
       <h1 className="title">NON-MALT DISCOUNT REQUEST APP</h1>
 <div className="button-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <button onClick={() => setPage('home')} className="back-button">Back</button>
