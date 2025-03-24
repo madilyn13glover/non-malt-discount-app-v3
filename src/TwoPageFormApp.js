@@ -400,28 +400,14 @@ export default function TwoPageFormApp() {
           </colgroup>
           <thead>
             <tr>
-              <th style={{ ...headerCell, fontSize: "12px", padding: "6px" }}>Min</th>
-              <th style={{ ...headerCell, fontSize: "12px", padding: "6px" }}>Mx</th>
-              <th style={{ ...headerCell, fontSize: "12px", padding: "6px" }}>Discount</th>
-              <th style={{ ...headerCell, fontSize: "12px", padding: "6px" }}>Allowance</th>
-              <th style={{ ...headerCell, fontSize: "12px", padding: "6px" }}>AB Split</th>
-              <th style={{ ...headerCell, width: "70px", fontSize: "12px", padding: "6px" }}>Action</th>
+            <th style={headerCell}>Min</th>
+          <th style={headerCell}>Max</th>
+          <th style={headerCell}>Discount</th>
+          <th style={headerCell}>Allowance</th>
+          <th style={headerCell}>AB Split</th>
+          <th style={{ ...headerCell, width: "70px" }}>Action</th>
             </tr>
           </thead>
-        </table>
-      </div>
-
-      {/* Scrollable row section */}
-      <div style={{ overflowY: "auto", flex: 1 }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed", fontSize: "12px" }}>
-          <colgroup>
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "16%" }} />
-            <col style={{ width: "8%" }} />
-          </colgroup>
           <tbody>
             {qbData.map((row, index) => (
               <tr key={index}>
