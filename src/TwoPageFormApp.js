@@ -103,40 +103,24 @@ export default function TwoPageFormApp() {
   if (page === 'requestSandbox') {
     return (
       <div className="containersubmit">
-  <h2 className="title">Submitted Requests</h2>
-
-  {/* Filter Section */}
-  <div className="filters" style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
-    <div>
-      <label>Start Date:</label>
-      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-    </div>
-    <div>
-      <label>End Date:</label>
-      <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-    </div>
-    <div>
-      <label>Chain:</label>
-      <select value={selectedChain} onChange={(e) => setSelectedChain(e.target.value)}>
-        <option value="">All Chains</option>
-        <option value="Chain1">Chain 1</option>
-        <option value="Chain2">Chain 2</option>
-      </select>
-    </div>
-    <button onClick={applyFilters}>Apply Filters</button>
-  </div>
-
-  {/* Gallery */}
-  <div className="gallery">
-    {filteredRequests.map((req) => (
-      <div className="request-card" key={req.id}>
-        <p><strong>Request ID:</strong> {req.id}</p>
-        <p><strong>Status:</strong> {req.status}</p>
-        <p><strong>Date:</strong> {req.date}</p>
-        <p><strong>Chain:</strong> {req.chain}</p>
-      </div>
-    ))}
-  </div>
+        <h2 className="title">Submitted Requests</h2>
+        <div className="gallery">
+          <div className="request-card">
+            <p><strong>Request ID:</strong> 001</p>
+            <p><strong>Status:</strong> Pending</p>
+            <p><strong>Date:</strong> 2025-03-05</p>
+          </div>
+          <div className="request-card">
+            <p><strong>Request ID:</strong> 002</p>
+            <p><strong>Status:</strong> Approved</p>
+            <p><strong>Date:</strong> 2025-03-03</p>
+          </div>
+          <div className="request-card">
+            <p><strong>Request ID:</strong> 003</p>
+            <p><strong>Status:</strong> Rejected</p>
+            <p><strong>Date:</strong> 2025-03-02</p>
+          </div>
+        </div>
 
   <button onClick={() => setPage('home')}>Back</button>
 </div>
