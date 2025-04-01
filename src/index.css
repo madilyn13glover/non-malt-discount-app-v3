@@ -200,3 +200,16 @@ input:disabled {
     color: #000;
   }
   
+  .filters label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
